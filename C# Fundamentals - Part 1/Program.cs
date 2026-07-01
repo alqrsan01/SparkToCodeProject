@@ -2,7 +2,7 @@
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] args, bool checkId1)
         {
             // Task 1
             string name = "Hassan";
@@ -37,7 +37,36 @@
                 Console.WriteLine("Number is Odd");
             }
 
-            // Task 4
+            // Task  4
+            Console.Write("Enter you age: ");
+            int age1 = int.Parse(Console.ReadLine());
+            Console.Write("Do yau have valid national ID: (yes/no)");
+            string id = Console.ReadLine();
+
+            bool checkId = false;
+            if (id == "yes")
+            {
+                checkId = true;
+            }
+            else if (id == "no")
+            {
+                checkId = false;
+            }
+            else
+            {
+                Console.WriteLine("Invalid Input");
+            }
+
+            if (age1 >= 18 && checkId)
+            {
+                Console.WriteLine("Eligible");
+            }
+            else
+            {
+                Console.WriteLine("Not Eligible");
+            }
+
+            // Task 5
             Console.Write("Enter your Grade: ");
             char grade = char.Parse(Console.ReadLine());
 
@@ -62,6 +91,7 @@
                     Console.WriteLine("Invalid Grade");
                     break;
             }
+
         }
     }
 }

@@ -11,6 +11,18 @@
             bool student = true;
 
             Console.WriteLine("Name: " + name + ", Age: " + age + ", Height: " + height + ", Student: " + student);
+
+            // Task 2
+            Console.Write("Enter Length: ");
+            float length = float.Parse(Console.ReadLine());
+            Console.Write("Enter Width: ");
+            float width = float.Parse(Console.ReadLine());
+
+            float area = length * width;
+            float perimeter = 2 * (length + width);
+
+            Console.WriteLine("Area: " + area);
+            Console.WriteLine("Perimeter: " + perimeter);
         }
     }
 }

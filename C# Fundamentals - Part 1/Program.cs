@@ -421,6 +421,55 @@
             Console.WriteLine("Discount: " + discountAmount);
             Console.WriteLine("tax: " + tax);
             Console.WriteLine("Final total: " + finalTotal);
+
+            // Task 15
+            Console.Write("Enter program type (A, S): ");
+            string programType = Console.ReadLine();
+            Console.Write("Enter GPA (out of 4.0): ");
+            double gpa = double.Parse(Console.ReadLine());
+            Console.Write("Enter entrance exam score (out of 100): ");
+            int examScore = int.Parse(Console.ReadLine());
+            Console.Write("Do you have extracurricular achievements? (yes/no): ");
+            string extracurricular = Console.ReadLine();
+
+            string result = "";
+            switch (programType)
+            {
+                case "S":
+                    if (gpa >= 3.0 && examScore >= 75)
+                    {
+                        result = "Admitted";
+                    }
+                    else if (extracurricular == "yes")
+                    {
+                        result = "conditionally admitted";
+                    }
+                    else
+                    {
+                        result = "Not admitted";
+                    }
+                    Console.WriteLine("Program: Scince: " + result);
+                    break;
+                case "A":
+                    if (gpa >= 2.5 && examScore >= 60)
+                    {
+                        result = "Admitted";
+
+                    }
+                    else if (extracurricular == "yes")
+                    {
+                        result = "conditionally admitted";
+                    }
+                    else
+                    {
+                        result = "Not admitted";
+                    }
+                    Console.WriteLine("Program: Arts: " + result);
+                    break;
+                default:
+                    Console.WriteLine("Invalid program type");
+                    break;
+            }
         }
     }
 }

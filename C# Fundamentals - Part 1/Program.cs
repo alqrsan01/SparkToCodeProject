@@ -111,6 +111,30 @@
             {
                 Console.WriteLine("Hot");
             }
+
+            // Task 7
+            Console.Write("Enter your Age: ");
+            int age2 = int.Parse(Console.ReadLine());
+
+            int price = 0;
+            string category = "";
+            if (age2 <= 12)
+            {
+                price = 2000;
+                category = "Children";
+            }
+            else if (age2 >= 13 && age2 <= 59)
+            {
+                price = 5000;
+                category = "Adults";
+            }
+            else
+            {
+                price = 3000;
+                category = "Seniors";
+            }
+
+            Console.WriteLine("Category: " + category + ", Price: " + price);
         }
     }
 }

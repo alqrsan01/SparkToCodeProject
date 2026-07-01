@@ -376,6 +376,51 @@
             {
                 Console.WriteLine("The triangle is not valid.");
             }
+
+            // Task 14
+            Console.Write("Enter product code: (1, 2, 3)");
+            int productCode = int.Parse(Console.ReadLine());
+            Console.Write("Enter quantity: ");
+            int quantity = int.Parse(Console.ReadLine());
+            Console.Write("Do you have a discount coupon? (yes/no): ");
+            string discountCoupon = Console.ReadLine();
+
+            double unitPrice = 0;
+            string productName = "";
+            switch (productCode)
+            {
+                case 1:
+                    productName = "Headphones";
+                    unitPrice = 8.500;
+                    break;
+                case 2:
+                    productName = "Keyboard";
+                    unitPrice = 12.000;
+                    break;
+                case 3:
+                    productName = "Mouse";
+                    unitPrice = 5.000;
+                    break;
+                default:
+                    Console.WriteLine("Invalid product code");
+                    break;
+            }
+
+            double subtotal = unitPrice * quantity;
+            double discountAmount = 0;
+            if (discountCoupon == "yes" && subtotal > 20)
+            {
+                discountAmount = subtotal * 0.10;
+            }
+            double afterdiscount = subtotal - discountAmount;
+            double tax = afterdiscount * 0.05;
+            double finalTotal = afterdiscount + tax;
+
+            Console.WriteLine("Product: " + productName);
+            Console.WriteLine("Subtotal: " + subtotal);
+            Console.WriteLine("Discount: " + discountAmount);
+            Console.WriteLine("tax: " + tax);
+            Console.WriteLine("Final total: " + finalTotal);
         }
     }
 }

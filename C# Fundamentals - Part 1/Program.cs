@@ -135,6 +135,24 @@
             }
 
             Console.WriteLine("Category: " + category + ", Price: " + price);
+
+            // Task 8
+            Console.Write("Enter total bill amount: ");
+            float billAmount = float.Parse(Console.ReadLine());
+            Console.Write("Are you loyalty memeber? (yes/no)");
+            string loyaltyMember = Console.ReadLine();
+
+            double discount = 0;
+            double finalAmount = 0;
+            if (billAmount > 20 && loyaltyMember == "yes")
+            {
+                discount = billAmount * 0.15;
+                finalAmount = billAmount - discount;
+            }
+
+            Console.WriteLine("Original Bill Amount: " + billAmount);
+            Console.WriteLine("Discount: " + discount);
+            Console.WriteLine("Final Bill Amount: " + finalAmount);
         }
     }
 }

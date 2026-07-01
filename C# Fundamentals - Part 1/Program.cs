@@ -185,6 +185,50 @@
                     Console.WriteLine("Invalid day number");
                     break;
             }
+
+            // Task 10
+            Console.Write("Enter a number one: ");
+            int number1 = int.Parse(Console.ReadLine());
+            Console.Write("Enter a number two: ");
+            int number2 = int.Parse(Console.ReadLine());
+            Console.Write("Enter an operator character (+, -, *, /, %): ");
+            char operatorChar = char.Parse(Console.ReadLine());
+
+            switch (operatorChar)
+            {
+                case '+':
+                    Console.WriteLine("Result: " + (number1 + number2));
+                    break;
+                case '-':
+                    Console.WriteLine("Result: " + (number1 - number2));
+                    break;
+                case '*':
+                    Console.WriteLine("Result: " + (number1 * number2));
+                    break;
+                case '/':
+                    if (number2 != 0)
+                    {
+                        Console.WriteLine("Result: " + (number1 / number2));
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error: Division by zero");
+                    }
+                    break;
+                case '%':
+                    if (number2 != 0)
+                    {
+                        Console.WriteLine("Result: " + (number1 % number2));
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error: Division by zero");
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Invalid operator");
+                    break;
+            }
         }
     }
 }

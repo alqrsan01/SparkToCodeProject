@@ -92,6 +92,25 @@
                     break;
             }
 
+
+            // Task 6
+            Console.Write("Enter Temperature in Celsius: ");
+            float temperature = float.Parse(Console.ReadLine());
+
+            float fahrenheit = (temperature * 9 / 5) + 32;
+            Console.WriteLine("Temperature in Fahrenheit: " + fahrenheit);
+            if (fahrenheit < 10)
+            {
+                Console.WriteLine("Cold");
+            }
+            else if (fahrenheit >= 10 && fahrenheit <= 30)
+            {
+                Console.WriteLine("Mid");
+            }
+            else
+            {
+                Console.WriteLine("Hot");
+            }
         }
     }
 }

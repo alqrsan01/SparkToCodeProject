@@ -23,6 +23,19 @@
 
             Console.WriteLine("Area: " + area);
             Console.WriteLine("Perimeter: " + perimeter);
+
+            // Task 3
+            Console.Write("Enetr Number: ");
+            int number = int.Parse(Console.ReadLine());
+
+            if ((number % 2) == 0)
+            {
+                Console.WriteLine("Number is Even");
+            }
+            else
+            {
+                Console.WriteLine("Number is Odd");
+            }
         }
     }
 }

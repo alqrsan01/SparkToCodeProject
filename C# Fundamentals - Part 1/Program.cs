@@ -348,6 +348,34 @@
             Console.WriteLine("Shipping Cost: " + shippingCost);
             Console.WriteLine("Extra Charge: " + extraCharge);
             Console.WriteLine("Total Shipping Cost: " + totalShippingCost);
+
+            // Task 13
+            Console.Write("Enter side one of lenght of triangle: ");
+            double sideOne = double.Parse(Console.ReadLine());
+            Console.Write("Enter side two of lenght of triangle: ");
+            double sideTwo = double.Parse(Console.ReadLine());
+            Console.Write("Enter side three of lenght of triangle: ");
+            double sideThree = double.Parse(Console.ReadLine());
+
+            if (sideOne + sideTwo > sideThree && sideOne + sideThree > sideTwo && sideTwo + sideThree > sideOne)
+            {
+                if (sideOne == sideTwo && sideTwo == sideThree)
+                {
+                    Console.WriteLine("The triangle is Equilateral.");
+                }
+                else if (sideOne == sideTwo || sideOne == sideThree || sideTwo == sideThree)
+                {
+                    Console.WriteLine("The triangle is Isosceles.");
+                }
+                else
+                {
+                    Console.WriteLine("The triangle is Scalene.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("The triangle is not valid.");
+            }
         }
     }
 }

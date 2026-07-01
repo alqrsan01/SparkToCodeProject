@@ -36,6 +36,32 @@
             {
                 Console.WriteLine("Number is Odd");
             }
+
+            // Task 4
+            Console.Write("Enter your Grade: ");
+            char grade = char.Parse(Console.ReadLine());
+
+            switch (grade)
+            {
+                case 'A':
+                    Console.WriteLine("Excellent");
+                    break;
+                case 'B':
+                    Console.WriteLine("Very Good");
+                    break;
+                case 'C':
+                    Console.WriteLine("Good");
+                    break;
+                case 'D':
+                    Console.WriteLine("Pass");
+                    break;
+                case 'F':
+                    Console.WriteLine("Fail");
+                    break;
+                default:
+                    Console.WriteLine("Invalid Grade");
+                    break;
+            }
         }
     }
 }

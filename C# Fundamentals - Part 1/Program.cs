@@ -282,6 +282,72 @@
                     Console.WriteLine("Not Eligible for loan due to existing loans");
                 }
             }
+
+            // Task 12
+            Console.Write("Enter region code: ");
+            char regionCode = char.Parse(Console.ReadLine());
+            Console.Write("Enter package weight in kg: ");
+            double packageWeight = double.Parse(Console.ReadLine());
+
+            double shippingCost = 0;
+            double extraCharge = 0;
+            switch (regionCode)
+            {
+                case 'A':
+                    shippingCost = packageWeight * 1;
+                    if (packageWeight > 10)
+                    {
+                        extraCharge += 5;
+                    }
+                    else if (packageWeight > 5)
+                    {
+                        extraCharge += 2;
+                    }
+                    else
+                    {
+                        extraCharge += 0;
+                    }
+                    break;
+                case 'B':
+                    shippingCost = packageWeight * 3;
+                    if (packageWeight > 10)
+                    {
+                        extraCharge += 5;
+                    }
+                    else if (packageWeight > 5)
+                    {
+                        extraCharge += 2;
+                    }
+                    else
+                    {
+                        extraCharge += 0;
+                    }
+                    break;
+                case 'C':
+                    shippingCost = packageWeight * 7;
+                    if (packageWeight > 10)
+                    {
+                        extraCharge += 5;
+                    }
+                    else if (packageWeight > 5)
+                    {
+                        extraCharge += 2;
+                    }
+                    else
+                    {
+                        extraCharge += 0;
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Invalid region");
+                    break;
+            }
+
+            double totalShippingCost = shippingCost + extraCharge;
+
+            Console.WriteLine("Shipping Cost: " + shippingCost);
+            Console.WriteLine("Extra Charge: " + extraCharge);
+            Console.WriteLine("Total Shipping Cost: " + totalShippingCost);
         }
     }
 }

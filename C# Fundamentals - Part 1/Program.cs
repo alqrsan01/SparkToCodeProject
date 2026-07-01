@@ -229,6 +229,59 @@
                     Console.WriteLine("Invalid operator");
                     break;
             }
+
+            // Task 11
+            Console.Write("Enter your age: ");
+            int age3 = int.Parse(Console.ReadLine());
+            Console.Write("Enter your monthly income: ");
+            double income = double.Parse(Console.ReadLine());
+            Console.Write("Do you have any exiting loans? (yes/no): ");
+            string loans = Console.ReadLine();
+
+            bool haveLoans = false;
+            if (loans == "yes")
+            {
+                haveLoans = true;
+            }
+            else if (loans == "no")
+            {
+                haveLoans = false;
+            }
+            else
+            {
+                Console.WriteLine("Invalid Input");
+            }
+
+            bool eligible = false;
+            if ((age3 >= 21 && age3 <= 60) && (income > 400) && !haveLoans)
+            {
+                eligible = true;
+            }
+            else
+            {
+                eligible = false;
+            }
+
+            if (eligible)
+            {
+                Console.WriteLine("Eligible for loan");
+
+            }
+            else
+            {
+                if (age3 < 21 || age3 > 60)
+                {
+                    Console.WriteLine("Not Eligible for loan due to age");
+                }
+                else if (income <= 400)
+                {
+                    Console.WriteLine("Not Eligible for loan due to income");
+                }
+                else if (haveLoans)
+                {
+                    Console.WriteLine("Not Eligible for loan due to existing loans");
+                }
+            }
         }
     }
 }

@@ -103,6 +103,44 @@
             {
                 Console.WriteLine("Unexpected error: " + ex.Message);
             }
+
+            // Task 7: Repeating Menu with Exit Option
+            bool running = true;
+            
+            while (running)
+            {
+                Console.WriteLine("Menu:");
+                Console.WriteLine("1) Say Hello");
+                Console.WriteLine("2) Show Time-of-day Greeting");
+                Console.WriteLine("3) Exit");
+                Console.WriteLine("Choose an option: ");
+
+                try
+                {
+                    int choice = int.Parse(Console.ReadLine());
+
+                    switch (choice)
+                    {
+                        case 1:
+                            Console.WriteLine("Hello! Welcome to Spark to Code!");
+                            break;
+                        case 2:
+                            Console.WriteLine("Good day! Hope you're enjoying the bootcamp.");
+                            break;
+                        case 3:
+                            Console.WriteLine("Goodbye!");
+                            running = false;
+                            break;
+                        default:
+                            Console.WriteLine("Invalid option. Please choose 1, 2, 3");
+                            break;
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Error: Please enter a number (1, 2, 3)");
+                }
+            }
         }
     }
 }

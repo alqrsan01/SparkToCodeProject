@@ -24,6 +24,15 @@
                 total += i;
             }
             Console.WriteLine("Sum from 1 to " + n + " = " + total);
+
+            // Task 3: Multiplication Table
+            Console.Write("Enter a number: ");
+            int num = int.Parse(Console.ReadLine());
+
+            for (int i = 1; i <= 10; i++)
+            {
+                Console.WriteLine(num + " x " + i + " = " + (num * i));
+            }
         }
     }
 }

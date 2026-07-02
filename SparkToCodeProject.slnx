@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="C# Fundamentals - Part 1/C# Fundamentals - Part 1.csproj" Id="61814df7-3777-4d4b-979f-0c9fe8cc6a48" />
+  <Project Path="C# Fundamentals - Part 2/C# Fundamentals - Part 2.csproj" Id="5f103f56-c211-4d37-8448-0708240c60c4" />
   <Project Path="CsharpSession1/CsharpSession1.csproj" />
   <Project Path="CsharpSession2/CsharpSession2.csproj" Id="2493251b-8e37-47b6-a970-9cb54fa74fc1" />
 </Solution>

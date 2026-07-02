@@ -74,6 +74,35 @@
                     Console.WriteLine("Correct! You guessed it in " + attempts + " attempts.");
                 }
             } while (guess != secretNumber);
+
+            // Task 6: Safe Division Calculator
+            try
+            {
+                Console.Write("Enter the first number: ");
+                double a = double.Parse(Console.ReadLine());
+                Console.Write("Enter the second number: ");
+                double b = double.Parse(Console.ReadLine());
+
+                if (b == 0)
+                {
+                    throw new DivideByZeroException();
+                }
+
+                double result = a / b;
+                Console.WriteLine("Result: " + a + " / " + b + " = " + result);
+            }
+            catch (DivideByZeroException)
+            {
+                Console.WriteLine("Error: Cannot divide by zero");
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Error: Please enter valid numbers");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Unexpected error: " + ex.Message);
+            }
         }
     }
 }

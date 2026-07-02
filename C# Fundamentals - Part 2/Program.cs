@@ -141,6 +141,20 @@
                     Console.WriteLine("Error: Please enter a number (1, 2, 3)");
                 }
             }
+
+            // Task 8: Sum of Even Numbers Only
+            Console.Write("Eneter a positive whole number N: ");
+            int n1 = int.Parse(Console.ReadLine());
+            int total1 = 0;
+             
+            for (int i = 1; i <= n1; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    total1 += i;
+                }
+            }
+            Console.WriteLine($"Sum of even numbers from 1 to {n} = {total1}");
         }
     }
 }

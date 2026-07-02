@@ -155,6 +155,38 @@
                 }
             }
             Console.WriteLine($"Sum of even numbers from 1 to {n} = {total1}");
+
+            // Task 9: Validated Positive Number Input
+            int n2 = 0;
+            bool validInput = false;
+
+            do
+            {
+                Console.Write("Enter a positive whole number: ");
+                try
+                {
+                    n2 = int.Parse(Console.ReadLine());
+                    if (n2 <= 0)
+                    {
+                        Console.WriteLine("Error: The number must be positive (greater than zero)");
+                    }
+                    else
+                    {
+                        validInput = true;
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Error: That is not a valid number.");
+                }
+            } while (!validInput);
+
+            int total2 = 0;
+            for (int i = 1; i <= n2; i++)
+            {
+                total2 += i;
+            }
+            Console.WriteLine($"Sum from 1 to {n2} = {total2}");
         }
     }
 }

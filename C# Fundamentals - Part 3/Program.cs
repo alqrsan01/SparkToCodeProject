@@ -74,6 +74,24 @@
                     Console.WriteLine("Password should not be 'password'.");
                 }
             }
+
+            // Task 7: Clean Name Comparator
+            Console.Write("Enter first name: ");
+            string firstName = Console.ReadLine();
+            Console.Write("Enter secound name: ");
+            string secoundName = Console.ReadLine();
+
+            string firstNameCleaned = firstName.Trim().ToLower();
+            string secoundNameCleaned = secoundName.Trim().ToLower();
+
+            if (firstNameCleaned == secoundNameCleaned)
+            {
+                Console.WriteLine("Match");
+            }
+            else
+            {
+                Console.WriteLine("No Match");
+            }
         }
     }
 }

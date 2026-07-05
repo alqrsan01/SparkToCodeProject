@@ -12,6 +12,13 @@
 
             int subtractResult = num1 - num2;
             Console.WriteLine(Math.Abs(subtractResult));
+
+            // Task 2:  Power & Root Explorer
+            Console.Write("Enetr a number: ");
+            int num3 = int.Parse(Console.ReadLine());
+
+            Console.WriteLine($"Power of {num3} is: {Math.Pow(num3, 2)}");
+            Console.WriteLine($"Square root of {num3} is: {Math.Sqrt(num3)}");
         }
     }
 }

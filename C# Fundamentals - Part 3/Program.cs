@@ -118,6 +118,14 @@
             {
                 Console.WriteLine("Invalid date format");
             }
+
+            // Task 9:  Round Up / Round Down Explorer
+            Console.Write("Enter a decimal number: ");
+            double decimalNumber = double.Parse(Console.ReadLine());
+
+            Console.WriteLine($"Nearest whole number: {Math.Round(decimalNumber)}");
+            Console.WriteLine($"Always rounded up: {Math.Ceiling(decimalNumber)}");
+            Console.WriteLine($"Always rounded down: {Math.Floor(decimalNumber)}");
         }
     }
 }

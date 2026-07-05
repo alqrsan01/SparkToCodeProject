@@ -92,6 +92,32 @@
             {
                 Console.WriteLine("No Match");
             }
+
+            // Task 8: Membership Expiry Checker
+            try
+            {
+                Console.Write("Enter membership start date (yyyy-mm-dd): ");
+                DateTime startDate = DateTime.Parse(Console.ReadLine());
+                Console.Write("Enter number of valid membership days: ");
+                int validDays = int.Parse(Console.ReadLine());
+
+                DateTime expiryDate = startDate.AddDays(validDays);
+
+                if (DateTime.Today > expiryDate)
+                {
+                    Console.WriteLine("Expired");
+                    Console.WriteLine($"Membership expires on: {expiryDate.ToString("yyyy-MM-dd")}");
+                }
+                else
+                {
+                    Console.WriteLine("Active");
+                    Console.WriteLine($"Membership expir on: {expiryDate.ToString("yyyy-MM-dd")}");
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Invalid date format");
+            }
         }
     }
 }

@@ -27,6 +27,15 @@
             Console.WriteLine($"Name in uppercase: {fullName.ToUpper()}");
             Console.WriteLine($"Name in lowercase: {fullName.ToLower()}");
             Console.WriteLine($"Characters it contains: {fullName.Length}");
+
+            // Task 4: Subscription End Date
+            Console.Write("Enter the number of days of a free taial: ");
+            int freeTailDays = int.Parse(Console.ReadLine());
+
+            DateTime currntDate = DateTime.Today;
+            DateTime subscriptionDateEnd = currntDate.AddDays(freeTailDays);
+
+            Console.WriteLine($"Your subsciption will end on: {subscriptionDateEnd.ToString("yyyy-MM-dd")}");
         }
     }
 }

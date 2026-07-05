@@ -126,6 +126,22 @@
             Console.WriteLine($"Nearest whole number: {Math.Round(decimalNumber)}");
             Console.WriteLine($"Always rounded up: {Math.Ceiling(decimalNumber)}");
             Console.WriteLine($"Always rounded down: {Math.Floor(decimalNumber)}");
+
+            // Task 10: Word Position Finder
+            Console.Write("Enter a sentence: ");
+            string sentence = Console.ReadLine();
+            Console.Write("Enter a word: ");
+            string word = Console.ReadLine();
+
+            if (sentence.Contains(word))
+            {
+                Console.WriteLine($"First occurrence at position: {sentence.IndexOf(word)}");
+                Console.WriteLine($"Last occurrence at position: {sentence.LastIndexOf(word)}");
+            }
+            else
+            {
+                Console.WriteLine("Not found");
+            }
         }
     }
 }

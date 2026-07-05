@@ -1,4 +1,6 @@
-﻿namespace C__Fundamentals___Part_3
+﻿using System.ComponentModel;
+
+namespace C__Fundamentals___Part_3
 {
     internal class Program
     {
@@ -141,6 +143,37 @@
             else
             {
                 Console.WriteLine("Not found");
+            }
+
+            // Task 11:  One-Time Password (OTP) Generator
+            int generatedOTP = new Random().Next(1000, 9999);
+            Console.WriteLine($"Generated OTP: {generatedOTP}");
+            int attempts = 0;
+            while (attempts < 3)
+            {
+                Console.Write("Enter the OTP: ");
+                try
+                {
+                    int userOTP = int.Parse(Console.ReadLine());
+                    if (userOTP == generatedOTP)
+                    {
+                        Console.WriteLine("Verified");
+                        break;
+                    }
+                    else
+                    {
+                        attempts++;
+                    }
+
+                }
+                catch
+                {
+                    Console.WriteLine("Invalid OTP");
+                }
+            }
+            if (attempts >= 3)
+            {
+                Console.WriteLine("Verification Failed");
             }
         }
     }

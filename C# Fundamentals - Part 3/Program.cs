@@ -36,6 +36,22 @@
             DateTime subscriptionDateEnd = currntDate.AddDays(freeTailDays);
 
             Console.WriteLine($"Your subsciption will end on: {subscriptionDateEnd.ToString("yyyy-MM-dd")}");
+
+            // Task 5: Grade Rounding System
+            Console.Write("Enter your grade: ");
+            double grade = double.Parse(Console.ReadLine());
+
+            double rounderedGrade = Math.Round(grade);
+
+            Console.WriteLine($"Rounded Grade: {rounderedGrade}");
+            if (rounderedGrade >= 60)
+            {
+                Console.WriteLine("Pass");
+            }
+            else
+            {
+                Console.WriteLine("Fail");
+            }
         }
     }
 }

@@ -19,6 +19,14 @@
 
             Console.WriteLine($"Power of {num3} is: {Math.Pow(num3, 2)}");
             Console.WriteLine($"Square root of {num3} is: {Math.Sqrt(num3)}");
+
+            // Task 3: Name Formatter
+            Console.Write("Enter your full name: ");
+            string fullName = Console.ReadLine();
+
+            Console.WriteLine($"Name in uppercase: {fullName.ToUpper()}");
+            Console.WriteLine($"Name in lowercase: {fullName.ToLower()}");
+            Console.WriteLine($"Characters it contains: {fullName.Length}");
         }
     }
 }

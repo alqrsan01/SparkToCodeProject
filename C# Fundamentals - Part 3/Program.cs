@@ -175,6 +175,28 @@ namespace C__Fundamentals___Part_3
             {
                 Console.WriteLine("Verification Failed");
             }
+
+
+            // Task 12: Birthday Insights
+            try
+            {
+                Console.Write("Enter your birthdate (yyyy-mm-dd): ");
+                DateTime birthDate = DateTime.Parse(Console.ReadLine());
+
+                Console.WriteLine($"You were born on a {birthDate.DayOfWeek}");
+
+                int age = DateTime.Today.Year - birthDate.Year;
+                if (birthDate.Month > DateTime.Today.Month || birthDate.Month == DateTime.Today.Month && birthDate.Day > DateTime.Today.Day)
+                {
+                    age -= 1;
+                }
+                Console.WriteLine($"Your age is: {age}");
+
+            }
+            catch
+            {
+                Console.WriteLine("Invalid date fromat");
+            }
         }
     }
 }

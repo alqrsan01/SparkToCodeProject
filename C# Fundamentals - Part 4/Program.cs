@@ -112,6 +112,41 @@ namespace C__Fundamentals___Part_4
         {
             return width * length;
         }
+
+
+        // Task 11: Function-Based Calculator
+        static double Add(double a, double b)
+        {
+            return a + b;
+        }
+        static double Subtract(double a, double b)
+        {
+            return a - b;
+        }
+        static double Multiply1(double a, double b)
+        {
+            return a * b;
+        }
+        static double DivideNumbers(double a, double b)
+        {
+            try
+            {
+                if (b == 0)
+                {
+                    throw new DivideByZeroException();
+                }
+                return a / b;
+            }
+            catch (DivideByZeroException e)
+            {
+                Console.WriteLine("Cannot divide by zero!");
+                return 0;
+            }
+        }
+        static void DisplayResult(string name, double result)
+        {
+            Console.WriteLine($"{name} result is: {result}");
+        }
         static void Main(string[] args)
         {
             // Task 1: Personalized Welcome Function
@@ -199,7 +234,58 @@ namespace C__Fundamentals___Part_4
                     break;
             }
 
+            // Task 11: Function-Based Calculator
+            Console.WriteLine("Enter which operaction you want to perfome: ");
+            int choice = 0;
 
+            while (choice != 5)
+            {
+                Console.WriteLine("Menu: ");
+                Console.WriteLine("1) Add");
+                Console.WriteLine("2) Subtract");
+                Console.WriteLine("3) Multiply");
+                Console.WriteLine("4) Divide");
+                Console.WriteLine("5) Exit");
+                Console.Write("Enter your choice: ");
+                choice = int.Parse(Console.ReadLine());
+                switch (choice)
+                {
+                    case 1:
+                        Console.Write("Enter first number: ");
+                        double num1 = double.Parse(Console.ReadLine());
+                        Console.Write("Enter second number: ");
+                        double num2 = double.Parse(Console.ReadLine());
+                        DisplayResult("Addition: ", Add(num1, num2));
+                        break;
+                    case 2:
+                        Console.Write("Enter first number: ");
+                        double num3 = double.Parse(Console.ReadLine());
+                        Console.Write("Enter second number: ");
+                        double num4 = double.Parse(Console.ReadLine());
+                        DisplayResult("Subtraction: ", Subtract(num3, num4));
+                        break;
+                    case 3:
+                        Console.Write("Enter first number: ");
+                        double num5 = double.Parse(Console.ReadLine());
+                        Console.Write("Enter second number: ");
+                        double num6 = double.Parse(Console.ReadLine());
+                        DisplayResult("Multiplication: ", Multiply1(num5, num6));
+                        break;
+                    case 4:
+                        Console.Write("Enter first number: ");
+                        double num7 = double.Parse(Console.ReadLine());
+                        Console.Write("Enter second number: ");
+                        double num8 = double.Parse(Console.ReadLine());
+                        DisplayResult("Division: ", DivideNumbers(num7, num8));
+                        break;
+                    case 5:
+                        Console.WriteLine("Exiting...");
+                        break;
+                    default:
+                        Console.WriteLine("Invalid choice. Please try again.");
+                        break;
+                }
+            }
         }
     }
 }

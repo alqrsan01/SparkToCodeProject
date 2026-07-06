@@ -16,6 +16,13 @@ namespace C__Fundamentals___Part_4
         {
             return x * x;
         }
+
+
+        // Task 3: Celsius to Fahrenheit Function
+        static double CelsiusToFahrenheit(double celsius)
+        {
+            return (celsius * 9 / 5) + 32;
+        }
         static void Main(string[] args)
         {
             // Task 1: Personalized Welcome Function
@@ -29,6 +36,12 @@ namespace C__Fundamentals___Part_4
             int number = int.Parse(Console.ReadLine());
 
             Console.WriteLine($"The square of {number} is {Square(number)}");
+
+            // Task 3: Celsius to Fahrenheit Function
+            Console.Write("Enter temperature in Celsius: ");
+            double celsius = double.Parse(Console.ReadLine());
+
+            Console.WriteLine($"{celsius}°C is equal to {CelsiusToFahrenheit(celsius)}°F");
         }
     }
 }

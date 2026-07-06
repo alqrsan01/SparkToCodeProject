@@ -123,7 +123,7 @@ namespace C__Fundamentals___Part_4
         {
             return a - b;
         }
-        static double Multiply1(double a, double b)
+        static double MultiplyNumbers(double a, double b)
         {
             return a * b;
         }
@@ -305,7 +305,7 @@ namespace C__Fundamentals___Part_4
                         double num5 = double.Parse(Console.ReadLine());
                         Console.Write("Enter second number: ");
                         double num6 = double.Parse(Console.ReadLine());
-                        DisplayResult("Multiplication: ", Multiply1(num5, num6));
+                        DisplayResult("Multiplication: ", MultiplyNumbers(num5, num6));
                         break;
                     case 4:
                         Console.Write("Enter first number: ");

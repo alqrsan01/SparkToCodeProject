@@ -147,6 +147,42 @@ namespace C__Fundamentals___Part_4
         {
             Console.WriteLine($"{name} result is: {result}");
         }
+
+
+        // Task 12: Student Report Card Generator
+        static double CalculateAverage(double a, double b,  double c)
+        {
+            return (a + b + c) / 3;
+        }
+        static string GetGradeLetter(double average)
+        {
+            if (average >= 90)
+            {
+                return "A";
+            }
+            else if (average >= 80)
+            {
+                return "B";
+            }
+            else if (average >= 70)
+            {
+                return "C";
+            }
+            else if (average >= 60)
+            {
+                return "D";
+            }
+            else
+            {
+                return "F";
+            }
+        }
+        static void PrintReportCard(string name, double average, string grade)
+        {
+            Console.WriteLine($"Student Name: {name}");
+            Console.WriteLine($"Average Score: {average}");
+            Console.WriteLine($"Grade: {grade}");
+        }
         static void Main(string[] args)
         {
             // Task 1: Personalized Welcome Function
@@ -286,6 +322,20 @@ namespace C__Fundamentals___Part_4
                         break;
                 }
             }
+
+            // Task 12: Student Report Card Generator
+            Console.Write("Enter student name: ");
+            string studentName = Console.ReadLine();
+            Console.Write("Enter score for subject 1: ");
+            double score1 = double.Parse(Console.ReadLine());
+            Console.Write("Enter score for subject 2: ");
+            double score2 = double.Parse(Console.ReadLine());
+            Console.Write("Enter score for subject 3: ");
+            double score3 = double.Parse(Console.ReadLine());
+
+            double averageScore = CalculateAverage(score1, score2, score3);
+            string gradeLetter = GetGradeLetter(averageScore);
+            PrintReportCard(studentName, averageScore, gradeLetter);
         }
     }
 }

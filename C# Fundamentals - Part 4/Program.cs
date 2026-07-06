@@ -101,6 +101,17 @@ namespace C__Fundamentals___Part_4
         {
             return a * b;
         }
+
+
+        // Task 10: Overloaded Area Calculator
+        static double CalculateArea1(double length)
+        {
+            return length * length;
+        }
+        static double CalculateArea1(double length, double width)
+        {
+            return width * length;
+        }
         static void Main(string[] args)
         {
             // Task 1: Personalized Welcome Function
@@ -162,6 +173,33 @@ namespace C__Fundamentals___Part_4
             Console.WriteLine("Multiplication of 2 integers: " + Multiply(2, 3));
             Console.WriteLine("Multiplication of 2 doubles: " + Multiply(2.5, 3.5));
             Console.WriteLine("Multiplication of 3 integers: " + Multiply(2, 3, 4));
+
+            // Task 10: Overloaded Area Calculator
+            Console.Write("Enter what shape you want (square/rectangle): ");
+            string shape = Console.ReadLine().ToLower();
+
+            switch (shape)
+            {
+                case "square":
+                    Console.Write("Enter the side of the square: ");
+                    double side = double.Parse(Console.ReadLine());
+
+                    Console.WriteLine($"Area of square: {CalculateArea1(side)}");
+                    break;
+                case "rectangle":
+                    Console.Write("Enter the length of rectangle: ");
+                    double length1 = double.Parse(Console.ReadLine());
+                    Console.Write("Enter the width of rectangle: ");
+                    double width1 = double.Parse(Console.ReadLine());
+
+                    Console.WriteLine($"Area of rectangle: {CalculateArea1(length1, width1)}");
+                    break;
+                default:
+                    Console.WriteLine("Invalid shape");
+                    break;
+            }
+
+
         }
     }
 }

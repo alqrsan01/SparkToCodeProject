@@ -40,6 +40,17 @@ namespace C__Fundamentals___Part_4
             return number % 2 == 0;
         }
 
+
+        // Task 6: Rectangle Area & Perimeter Functions
+        static double CalculateArea(double length, double width)
+        {
+            return length * width;
+        }
+        static double CalculatePerimeter(double length, double width)
+        {
+            return 2 * (length + width);
+        }
+
         static void Main(string[] args)
         {
             // Task 1: Personalized Welcome Function
@@ -75,6 +86,15 @@ namespace C__Fundamentals___Part_4
             {
                 Console.WriteLine("Odd");
             }
+
+            // Task 6: Rectangle Area & Perimeter Functions
+            Console.Write("Enter length of the rectangle: ");
+            double length = double.Parse(Console.ReadLine());
+            Console.Write("Enter width of the rectangle: ");
+            double width = double.Parse(Console.ReadLine());
+
+            Console.WriteLine($"Area: {CalculateArea(length, width)}");
+            Console.WriteLine($"Perimeter {CalculatePerimeter(length, width)}");
         }
     }
 }

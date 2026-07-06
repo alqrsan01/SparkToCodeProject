@@ -77,6 +77,15 @@ namespace C__Fundamentals___Part_4
             }
         }
 
+
+        // Task 8: Countdown Function
+        static void Countdown(int start)
+        {
+            for (int i = start; i >= 1; i--)
+            {
+                Console.WriteLine(i);
+            }
+        }
         static void Main(string[] args)
         {
             // Task 1: Personalized Welcome Function
@@ -127,6 +136,12 @@ namespace C__Fundamentals___Part_4
             int score = int.Parse(Console.ReadLine());
 
             Console.WriteLine($"Your grade is: {GetGradeLetter(score)}");
+
+            // Task 8: Countdown Function
+            Console.Write("Enter number: ");
+            int number2 = int.Parse(Console.ReadLine());
+
+            Countdown(number2);
         }
     }
 }

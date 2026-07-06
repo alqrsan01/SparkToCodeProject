@@ -32,6 +32,14 @@ namespace C__Fundamentals___Part_4
             Console.WriteLine("2) Help");
             Console.WriteLine("3) Exit");
         }
+
+
+        // Task 5: Even or Odd Function
+        static bool IsEven(int number)
+        {
+            return number % 2 == 0;
+        }
+
         static void Main(string[] args)
         {
             // Task 1: Personalized Welcome Function
@@ -54,6 +62,19 @@ namespace C__Fundamentals___Part_4
 
             // Tasl 4: Fixed Menu Display Function
             DisplayMenu();
+
+            // Task 5: Even or Odd Function
+            Console.Write("Enter a number: ");
+            int number1 = int.Parse(Console.ReadLine());
+
+            if (IsEven(number1))
+            {
+                Console.WriteLine("Even");
+            }
+            else
+            {
+                Console.WriteLine("Odd");
+            }
         }
     }
 }

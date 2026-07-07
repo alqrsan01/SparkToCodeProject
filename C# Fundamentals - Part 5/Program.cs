@@ -42,7 +42,19 @@
             }
             string currentURL = browsingHistory.Pop();
 
-            Console.WriteLine($"Went back from {currentURL}");
+            Console.WriteLine($"Last page: {currentURL}");
+
+            // Task 4: Customer Service Queue
+            Queue<string> customers = new Queue<string>();
+            for (int i = 0; i < 3; i++)
+            {
+                Console.Write($"Enter customer name {i + 1}: ");
+                string customer = Console.ReadLine();
+                customers.Enqueue(customer);
+            }
+            string currentCustomer = customers.Dequeue();
+
+            Console.WriteLine($"Serving customer: {currentCustomer}");
         }
     }
 }

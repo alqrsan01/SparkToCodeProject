@@ -16,6 +16,21 @@
             {
                 Console.WriteLine($"Grade: {grade}");
             }
+
+            // Task 2: Dynamic To-Do List
+            List<string> toDo = new List<string>();
+            for (int i= 0; i < 5; i++)
+            {
+                Console.Write($"Enter task number {i + 1}: ");
+                string task = Console.ReadLine();
+                toDo.Add(task);
+            }
+            int j = 1;
+            foreach (string task in toDo)
+            {
+                Console.WriteLine($"Task number {j}: {task}");
+                j++;
+            }
         }
     }
 }

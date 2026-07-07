@@ -25,6 +25,22 @@
             }
             return first;
         }
+
+
+        // Task 10: Print Queue Manager
+        static Queue<string> RemoveJob(Queue<string> jobs, string removeJob)
+        {
+            Queue<string> newJobs = new Queue<string>();
+            while (jobs.Count > 0)
+            {
+                string job = jobs.Dequeue();
+                if (job != removeJob)
+                {
+                    newJobs.Enqueue(job);
+                }
+            }
+            return newJobs;
+        }
         static void Main(string[] args)
         {
             // Task 1: Fixed Grades Array
@@ -169,6 +185,32 @@
             }
             Console.WriteLine($"Average grade: {CalculateAverage(gradesList)}");
             Console.WriteLine($"First failing grade: {FindFirstFailing(gradesList)}");
+
+            // Task 10: Print Queue Manager
+            Queue<string> jobs = new Queue<string>();
+            while (true)
+            {
+                Console.Write("Enter job name (type 'done' if you want to stop): ");
+                string job = Console.ReadLine();
+                if (job == "done")
+                {
+                    break;
+                }
+                jobs.Enqueue(job);
+            }
+            Console.Write("Enter job name to remove: ");
+            string removeJob = Console.ReadLine();
+            Console.WriteLine("Queue before remove job: ");
+            foreach (string job in jobs)
+            {
+                Console.WriteLine(job);
+            }
+            jobs = RemoveJob(jobs, removeJob);
+            Console.WriteLine("Queue after remove job: ");
+            foreach (string job in jobs)
+            {
+                Console.WriteLine(job);
+            }
         }
     }
 }

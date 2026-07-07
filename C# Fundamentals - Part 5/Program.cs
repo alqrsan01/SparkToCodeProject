@@ -184,7 +184,15 @@
                 gradesList.Add(grade);
             }
             Console.WriteLine($"Average grade: {CalculateAverage(gradesList)}");
-            Console.WriteLine($"First failing grade: {FindFirstFailing(gradesList)}");
+            int failing = FindFirstFailing(gradesList);
+            if (failing == 0)
+            {
+                Console.WriteLine("No failing grades!");
+            }
+            else
+            {
+                Console.WriteLine($"First failing grade: {failing}");
+            }
 
             // Task 10: Print Queue Manager
             Queue<string> jobs = new Queue<string>();

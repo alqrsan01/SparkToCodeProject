@@ -51,6 +51,7 @@
                         TransferAmount();
                         break;
                     case 6:
+                        ListAllCustomers();
                         break;
                     case 7:
                         break;
@@ -230,6 +231,18 @@
                 return;
             }
         }
-
+        static void ListAllCustomers()
+        {
+            if (customerNames.Count == 0)
+            {
+                Console.WriteLine("No customers found.");
+                return;
+            }
+            Console.WriteLine("===============List All Customers===============");
+            for (int i = 0; i < customerNames.Count; i++)
+            {
+                Console.WriteLine($"Customer Name: {customerNames[i]}, Account Number: {accountNumbers[i]}, Balance: {balances[i]}");
+            }
+        }
     }
 }

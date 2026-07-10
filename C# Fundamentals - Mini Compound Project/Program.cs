@@ -68,6 +68,7 @@
         }
         static void AddAccount()
         {
+            Console.WriteLine("===============Add New Acount===============");
             Console.Write("Enter customer name: ");
             string customerName = Console.ReadLine();
             Console.Write("Enter account number: ");
@@ -97,9 +98,11 @@
                 Console.WriteLine("Invalid amount. Please enter a number.");
                 return;
             }
+            Console.WriteLine("==============================");
         }
         static void DepositMoney()
         {
+            Console.WriteLine("===============Deposit Money===============");
             Console.Write("Enter account number: ");
             string accountNumber = Console.ReadLine();
             int index = accountNumbers.IndexOf(accountNumber);
@@ -125,9 +128,11 @@
                 Console.WriteLine("Invalid amount. Please enter a number.");
                 return;
             }
+            Console.WriteLine("==============================");
         }
         static void WithdrawMoney()
         {
+            Console.WriteLine("===============Withdrawal Money===============");
             Console.Write("Enter account number: ");
             string accountNumber = Console.ReadLine();
             int index = accountNumbers.IndexOf(accountNumber);
@@ -162,10 +167,11 @@
                 Console.WriteLine("Invalid amount. Please enter a number.");
                 return;
             }
-           
+            Console.WriteLine("==============================");
         }
         static void ShowBalance()
         {
+            Console.WriteLine("===============Show Balance===============");
             Console.Write("Enter account number: ");
             string accountNumber = Console.ReadLine();
             int index = accountNumbers.IndexOf(accountNumber);
@@ -177,9 +183,11 @@
             Console.WriteLine("Customer Name: " + customerNames[index]);
             Console.WriteLine("Account Number: " + accountNumbers[index]);
             Console.WriteLine("Balance: " + balances[index]);
+            Console.WriteLine("==============================");
         }
         static void TransferAmount()
         {
+            Console.WriteLine("===============Transfer Amount===============");
             Console.Write("Enter sender account number: ");
             string senderAccountNumber = Console.ReadLine();
             int senderIndex = accountNumbers.IndexOf(senderAccountNumber);
@@ -231,22 +239,25 @@
                 Console.WriteLine("Invalid amount. Please enter a number.");
                 return;
             }
+            Console.WriteLine("==============================");
         }
         static void ListAllCustomers()
         {
+            Console.WriteLine("===============List All Customers===============");
             if (customerNames.Count == 0)
             {
                 Console.WriteLine("No customers found.");
                 return;
             }
-            Console.WriteLine("===============List All Customers===============");
             for (int i = 0; i < customerNames.Count; i++)
             {
                 Console.WriteLine($"Customer Name: {customerNames[i]}, Account Number: {accountNumbers[i]}, Balance: {balances[i]}");
             }
+            Console.WriteLine("==============================");
         }
         static void SearchByName()
         {
+            Console.WriteLine("===============Search By Name===============");
             Console.Write("Enter customer name to search: ");
             string searchName = Console.ReadLine();
             bool found = false;
@@ -263,6 +274,7 @@
             {
                 Console.WriteLine("No accounts found for that name.");
             }
+            Console.WriteLine("==============================");
         }
     }
 }

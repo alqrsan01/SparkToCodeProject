@@ -253,7 +253,7 @@
 
             for (int i = 0; i < customerNames.Count; i++)
             {
-                if (customerNames[i] == searchName)
+                if (customerNames[i].ToLower() == searchName.ToLower())
                 {
                     Console.WriteLine($"Customer Name: {customerNames[i]}, Account Number: {accountNumbers[i]}, Balance: {balances[i]}");
                     found = true;

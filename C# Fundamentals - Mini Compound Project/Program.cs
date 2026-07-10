@@ -98,7 +98,31 @@
         }
         static void DepositMoney()
         {
-            // TODO: implement this service (see Section 3 requirements)
+            Console.Write("Enter account number: ");
+            string accountNumber = Console.ReadLine();
+            int index = accountNumbers.IndexOf(accountNumber);
+            if (index == -1)
+            {
+                Console.WriteLine("Account number not found. Please tyr again.");
+                return;
+            }
+            try
+            {
+                Console.Write("Enter deposit amount: ");
+                double depositAmount = double.Parse(Console.ReadLine());
+                if (depositAmount < 0)
+                {
+                    Console.WriteLine("Deposit amount cannot be negative. Please try again.");
+                    return;
+                }
+                balances[index] += depositAmount; 
+                Console.WriteLine("Deposit amount is updated successfully.");
+            }
+            catch
+            {
+                Console.WriteLine("Invalid amount. Please enter a number.");
+                return;
+            }
         }
         static void WithdrawMoney()
         {

@@ -103,7 +103,7 @@
             int index = accountNumbers.IndexOf(accountNumber);
             if (index == -1)
             {
-                Console.WriteLine("Account number not found. Please tyr again.");
+                Console.WriteLine("Account number not found. Please try again.");
                 return;
             }
             try
@@ -116,7 +116,7 @@
                     return;
                 }
                 balances[index] += depositAmount; 
-                Console.WriteLine("Deposit amount is updated successfully.");
+                Console.WriteLine($"Deposit amount is updated successfully. New balance: {balances[index]}");
             }
             catch
             {

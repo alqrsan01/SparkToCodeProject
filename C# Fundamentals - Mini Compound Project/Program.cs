@@ -17,8 +17,8 @@
                 Console.WriteLine("3. Withdraw Money");
                 Console.WriteLine("4. Show Balance");
                 Console.WriteLine("5. Transfer Amount");
-                Console.WriteLine("6. <your 1st custom service - choose a name>");
-                Console.WriteLine("7. <your 2nd custom service - choose a name>");
+                Console.WriteLine("6. List all customers");
+                Console.WriteLine("7. Search customer by name");
                 Console.WriteLine("8. Exit");
                 Console.Write("Choose an option: ");
 
@@ -54,6 +54,7 @@
                         ListAllCustomers();
                         break;
                     case 7:
+                        SearchByName();
                         break;
                     case 8:
                         exitApp = true;
@@ -242,6 +243,25 @@
             for (int i = 0; i < customerNames.Count; i++)
             {
                 Console.WriteLine($"Customer Name: {customerNames[i]}, Account Number: {accountNumbers[i]}, Balance: {balances[i]}");
+            }
+        }
+        static void SearchByName()
+        {
+            Console.Write("Enter customer name to search: ");
+            string searchName = Console.ReadLine();
+            bool found = false;
+
+            for (int i = 0; i < customerNames.Count; i++)
+            {
+                if (customerNames[i] == searchName)
+                {
+                    Console.WriteLine($"Customer Name: {customerNames[i]}, Account Number: {accountNumbers[i]}, Balance: {balances[i]}");
+                    found = true;
+                }
+            }
+            if (!found)
+            {
+                Console.WriteLine("No accounts found for that name.");
             }
         }
     }

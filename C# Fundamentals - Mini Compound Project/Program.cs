@@ -178,7 +178,57 @@
         }
         static void TransferAmount()
         {
-            // TODO: implement this service (see Section 3 requirements)
+            Console.Write("Enter sender account number: ");
+            string senderAccountNumber = Console.ReadLine();
+            int senderIndex = accountNumbers.IndexOf(senderAccountNumber);
+            if (senderIndex == -1)
+            {
+                Console.WriteLine("Account number not found. Please try again.");
+                return;
+            }
+            Console.Write("Enter receiver account number: ");
+            string receiverAccountNumber = Console.ReadLine();
+            int receiverIndex = accountNumbers.IndexOf(receiverAccountNumber);
+            if (receiverIndex == -1)
+            {
+                Console.WriteLine("Account number not found. Please try again.");
+                return;
+            }
+
+            if (senderIndex == receiverIndex)
+            {
+                Console.WriteLine("Sender and receiver cannot be the same account. Please try again.");
+                return;
+            }
+
+            try
+            {
+                Console.Write("Enter transfer amount: ");
+                double transferAmount = double.Parse(Console.ReadLine());
+                if (transferAmount <= 0)
+                {
+                    Console.WriteLine("Transfer Amount must be positive. Please try again.");
+                    return;
+                }
+                if (balances[senderIndex] >= transferAmount)
+                {
+                    balances[receiverIndex] += transferAmount;
+                    balances[senderIndex] -= transferAmount;
+                    Console.WriteLine("Transfer success");
+                    Console.WriteLine($"Sender new balance: {balances[senderIndex]}");
+                    Console.WriteLine($"Receiver new balance: {balances[receiverIndex]}");
+                }
+                else
+                {
+                    Console.WriteLine("Insufficient balance. Please try again.");
+                    return;
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Invalid amount. Please enter a number.");
+                return;
+            }
         }
 
     }

@@ -66,7 +66,35 @@
         }
         static void AddAccount()
         {
+            Console.Write("Enter customer name: ");
+            string customerName = Console.ReadLine();
+            Console.Write("Enter account number: ");
+            string accountNumber = Console.ReadLine();
 
+            if (accountNumbers.Contains(accountNumber))
+            {
+                Console.WriteLine("Account number already exists. Please try again.");
+                return;
+            }
+            try
+            {
+                Console.Write("Enter initial deposit amount: ");
+                double initialDeposit = double.Parse(Console.ReadLine());
+                if (initialDeposit < 0)
+                {
+                    Console.WriteLine("Initial deposit cannot be negative. Please try again.");
+                    return;
+                }
+                customerNames.Add(customerName);
+                accountNumbers.Add(accountNumber);
+                balances.Add(initialDeposit);
+                Console.WriteLine("Customer details added successfully");
+            }
+            catch
+            {
+                Console.WriteLine("Invalid amount. Please enter a number.");
+                return;
+            }
         }
         static void DepositMoney()
         {

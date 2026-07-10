@@ -126,7 +126,41 @@
         }
         static void WithdrawMoney()
         {
-            // TODO: implement this service (see Section 3 requirements)
+            Console.Write("Enter account number: ");
+            string accountNumber = Console.ReadLine();
+            int index = accountNumbers.IndexOf(accountNumber);
+            if (index == -1)
+            {
+                Console.WriteLine("Account number not found. Please try again.");
+                return;
+            }
+            
+            try
+            {
+                Console.Write("Enter withdrawal amount: ");
+                double amount = double.Parse(Console.ReadLine());
+                if (amount <= 0)
+                {
+                    Console.WriteLine("Withdrawal amount must be positive. Please try again.");
+                    return;
+                }
+                if (balances[index] >= amount)
+                {
+                    balances[index] -= amount;
+                    Console.WriteLine($"Withdrawal success. New balance {balances[index]}");
+                }
+                else
+                {
+                    Console.WriteLine("Insufficient balance. Please try again.");
+                    return;
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Invalid amount. Please enter a number.");
+                return;
+            }
+           
         }
         static void ShowBalance()
         {

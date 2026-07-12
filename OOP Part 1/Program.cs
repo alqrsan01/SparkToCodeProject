@@ -348,7 +348,20 @@
 
         static void CompareAccountBalances()
         {
-
+            double balance1 = account1.Balance;
+            double balance2 = account2.Balance;
+            if (balance1 == balance2)
+            {
+                Console.WriteLine("Both accounts have same balance.");
+            }
+            else if (balance1 > balance2)
+            {
+                Console.WriteLine("Account 1 has a higher balance.");
+            }
+            else
+            {
+                Console.WriteLine("Account 2 has a higher balance.");
+            }
         }
 
         static void RestockProduct()

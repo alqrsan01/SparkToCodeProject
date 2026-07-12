@@ -779,7 +779,47 @@
 
         static void FullBalanceTopUpFlow()
         {
-
+            Console.Write("Pick one account to top-up balance(1, 2): ");
+            try
+            {
+                int accountChoice = int.Parse(Console.ReadLine());
+                if (accountChoice == 1)
+                {
+                    if (account1.Balance < 50)
+                    {
+                        double topUpAmount = 100 - account1.Balance;
+                        Console.WriteLine($"Balance is: {account1.Balance}");
+                        account1.Deposit(topUpAmount);
+                        Console.WriteLine($"New balance for account 1: {account1.Balance}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No top-up needed.");
+                    }
+                }
+                else if (accountChoice == 2)
+                {
+                    if (account2.Balance < 50)
+                    {
+                        double topUpAmount = 100 - account2.Balance;
+                        Console.WriteLine($"Balance is: {account2.Balance}");
+                        account2.Deposit(topUpAmount);
+                        Console.WriteLine($"New balance for account 2: {account2.Balance}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No top-up needed.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid account choice. Please enter 1 or 2.");
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+            }
         }
 
         static void QuickAccountOpening()

@@ -421,7 +421,47 @@
 
         static void TransferBetweenAccounts()
         {
-
+            Console.Write("Choose source account (1 or 2): ");
+            try
+            {
+                int sourceAccountChoice = int.Parse(Console.ReadLine());
+                if (sourceAccountChoice == 1)
+                {
+                    Console.Write("Enter amount to transfer from account 1 to account 2: ");
+                    double amount = double.Parse(Console.ReadLine());
+                    if (account1.Balance >= amount)
+                    {
+                        account1.Withdraw(amount);
+                        account2.Deposit(amount);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Insufficient balance in account 1.");
+                    }
+                }
+                else if (sourceAccountChoice == 2)
+                {
+                    Console.Write("Enter amount to transfer from account 2 to account 1: ");
+                    double amount = double.Parse(Console.ReadLine());
+                    if (account2.Balance >= amount)
+                    {
+                        account2.Withdraw(amount);
+                        account1.Deposit(amount);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Insufficient balance in account 1.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid account choice. Please enter 1 or 2.");
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+            }
         }
 
         static void UpdateStudentGrade()

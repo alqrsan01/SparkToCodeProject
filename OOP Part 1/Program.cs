@@ -5,7 +5,14 @@
         public int AccountNumber { get; set; }
         public string HolderName { get; set; }
         public double Balance { get; set; }
-        
+
+        public BankAccount(int accountNumber, string holderName, double balance)
+        {
+            AccountNumber = accountNumber;
+            HolderName = holderName;
+            Balance = balance;
+        }
+
         public void Deposit(double amount)
         {
             Balance += amount;
@@ -824,7 +831,15 @@
 
         static void QuickAccountOpening()
         {
+            Console.Write("Enter account number: ");
+            int accountNumber = int.Parse(Console.ReadLine());
+            Console.Write("Enter holder name: ");
+            string holderName = Console.ReadLine();
+            Console.Write("Enter initial balance: ");
+            double initialBalance = double.Parse(Console.ReadLine());
 
+            BankAccount newAccount = new BankAccount(accountNumber, holderName, initialBalance);
+            newAccount.CheckBalance();
         }
 
         static void TotalStudentsCounter()

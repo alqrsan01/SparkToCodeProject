@@ -99,8 +99,8 @@
         static BankAccount account1 = new BankAccount { AccountNumber = 1163, HolderName = "Hassan", Balance = 5000.00 };
         static BankAccount account2 = new BankAccount { AccountNumber = 15203, HolderName = "Ali", Balance = 3000.00 };
 
-        static Student srudent1 = new Student { Name = "Ali", Address = "Muscat", Grade = 65 };
-        static Student srudent2 = new Student { Name = "Mohammed", Address = "Salalah", Grade = 75 };
+        static Student student1 = new Student { Name = "Ali", Address = "Muscat", Grade = 65 };
+        static Student student2 = new Student { Name = "Mohammed", Address = "Salalah", Grade = 75 };
 
         static Product product1 = new Product { ProductName = "Laptop", Price = 1000.00, StockQuantity = 10 };
         static Product product2 = new Product { ProductName = "Smartphone", Price = 500.00, StockQuantity = 20 };
@@ -201,7 +201,33 @@
         }
         static void UpdateStudentAddress()
         {
-
+            Console.Write("Pick one student to update address(1, 2): ");
+            try
+            {
+                int studentChoice = int.Parse(Console.ReadLine());
+                if (studentChoice == 1)
+                {
+                    Console.Write("Enter new address for student 1: ");
+                    string newAddress = Console.ReadLine();
+                    student1.Address = newAddress;
+                    Console.WriteLine($"Address updated successfully. New Address: {student1.Address}");
+                }
+                else if (studentChoice == 2)
+                {
+                    Console.Write("Enter new address for student 2: ");
+                    string newAddress = Console.ReadLine();
+                    student2.Address = newAddress;
+                    Console.WriteLine($"Address updated successfully. New Address: {student2.Address}");
+                }
+                else
+                {
+                    Console.WriteLine("Invalid student choice. Please enter 1 or 2.");
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+            }
         }
 
         static void MakeDeposit()

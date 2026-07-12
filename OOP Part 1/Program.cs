@@ -263,7 +263,33 @@
 
         static void MakeWithdrawal()
         {
-            
+            Console.Write("Pick one account to make a withdrawal(1, 2): ");
+            try
+            {
+                int accountChoice = int.Parse(Console.ReadLine());
+                if (accountChoice == 1)
+                {
+                    Console.Write("Enter withdrawal amount for account 1: ");
+                    double amount = double.Parse(Console.ReadLine());
+                    account1.Withdraw(amount);
+                    account1.CheckBalance();
+                }
+                else if (accountChoice == 2)
+                {
+                    Console.Write("Enter withdrawal amount for account 2: ");
+                    double amount = double.Parse(Console.ReadLine());
+                    account2.Withdraw(amount);
+                    account2.CheckBalance();
+                }
+                else
+                {
+                    Console.WriteLine("Invalid account choice. Please enter 1 or 2.");
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+            }
         }
 
         static void ViewProductDetails()

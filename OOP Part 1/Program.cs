@@ -466,7 +466,62 @@
 
         static void UpdateStudentGrade()
         {
+            Console.Write("Pick one student to update grade(1, 2): ");
+            try
+            {
+                int studentChoice = int.Parse(Console.ReadLine());
+                if (studentChoice == 1)
+                {
+                    Console.Write("Enter new grade for student 1 (0-100): ");
+                    try
+                    {
+                        int newGrade = int.Parse(Console.ReadLine());
+                        if (newGrade >= 0 && newGrade <= 100)
+                        {
+                            student1.Grade = newGrade;
+                            Console.WriteLine("Grade updated successfully.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid grade. Please enter a number between 0 and 100.");
+                        }
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Invalid input. Please enter a number between 0 and 100.");
+                    }
 
+                }
+                else if (studentChoice == 2)
+                {
+                    Console.Write("Enter new grade for student 2 (0-100): ");
+                    try
+                    {
+                        int newGrade = int.Parse(Console.ReadLine());
+                        if (newGrade >= 0 && newGrade <= 100)
+                        {
+                            student2.Grade = newGrade;
+                            Console.WriteLine("Grade updated successfully.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid grade. Please enter a number between 0 and 100.");
+                        }
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Invalid input. Please enter a number between 0 and 100.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid student choice. Please enter 1 or 2.");
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+            }
         }
 
         static void StudentReportCard()

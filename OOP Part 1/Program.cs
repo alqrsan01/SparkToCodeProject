@@ -8,23 +8,30 @@
         
         public void Deposit(double amount)
         {
-
+            Balance += amount;
+            SendEmail();
         }
         public void Withdraw(double amount)
         {
-
+            if (Balance >= amount)
+            {
+                Balance -= amount;
+                SendEmail();
+            }
         }
         public double CheckBalance()
         {
+            PrintInformation();
             return Balance;
         }
         private void PrintInformation()
         {
-
+            Console.WriteLine($"Holder Name: {HolderName}");
+            Console.WriteLine($"Balance: {Balance}");
         }
         private void SendEmail()
         {
-
+            Console.WriteLine("Email notification sent.");
         }
     }
 
@@ -157,7 +164,7 @@
         }
         static void ViewAccountDetails()
         {
-
+            
         }
         static void UpdateStudentAddress()
         {

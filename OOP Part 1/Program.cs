@@ -28,6 +28,24 @@
         }
     }
 
+    public class Student
+    {
+        public int Grade { get; set; }
+        public string Name { get; set; }
+        public string Address { get; set; }
+        private string Email { get; set; }
+        int age { get; set; }
+
+        public void Register(string Email)
+        {
+
+        }
+        private void SendEmail()
+        {
+
+        }
+    }
+
     public class Program
     {
         static void Main(string[] args)

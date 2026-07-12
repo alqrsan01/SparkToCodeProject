@@ -450,7 +450,7 @@
                     }
                     else
                     {
-                        Console.WriteLine("Insufficient balance in account 1.");
+                        Console.WriteLine("Insufficient balance in account 2.");
                     }
                 }
                 else

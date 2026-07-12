@@ -366,7 +366,57 @@
 
         static void RestockProduct()
         {
-
+            Console.Write("Pick one product to restock(1, 2): ");
+            try
+            {
+                int productChoice = int.Parse(Console.ReadLine());
+                if (productChoice == 1)
+                {
+                    Console.Write("Enter quantity to restock: ");
+                    int quantity = int.Parse(Console.ReadLine());
+                    product1.Restock(quantity);
+                    int currentStock = product1.StockQuantity;
+                    if (currentStock < 10)
+                    {
+                        Console.WriteLine("Low");
+                    }
+                    else if (currentStock >= 10 && currentStock < 50)
+                    {
+                        Console.WriteLine("Moderate");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Well Stocked");
+                    }
+                }
+                else if (productChoice == 2)
+                {
+                    Console.Write("Enter quantity to restock: ");
+                    int quantity = int.Parse(Console.ReadLine());
+                    product2.Restock(quantity);
+                    int currentStock = product2.StockQuantity;
+                    if (currentStock < 10)
+                    {
+                        Console.WriteLine("Low");
+                    }
+                    else if (currentStock >= 10 && currentStock < 50)
+                    {
+                        Console.WriteLine("Moderate");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Well Stocked");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid product choice. Please enter 1 or 2.");
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+            }
         }
 
         static void TransferBetweenAccounts()

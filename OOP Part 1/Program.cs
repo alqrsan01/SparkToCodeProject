@@ -618,7 +618,47 @@
 
         static void BulkSaleWithRevenue()
         {
-
+            Console.Write("Pick one product to sell in bulk(1, 2): ");
+            try
+            {
+                int productChoice = int.Parse(Console.ReadLine());
+                if (productChoice == 1)
+                {
+                    Console.Write("Enter quantity to sell for product 1: ");
+                    int quantity = int.Parse(Console.ReadLine());
+                    if (product1.StockQuantity >= quantity)
+                    {
+                        Console.WriteLine($"Total Revenue: {quantity * product1.Price}");
+                        product1.Sell(quantity);
+                    }
+                    else
+                    {
+                        Console.WriteLine($"You need {quantity - product1.StockQuantity} additional units to fulfill");
+                    }
+                }
+                else if (productChoice == 2)
+                {
+                    Console.Write("Enter quantity to sell for product 2: ");
+                    int quantity = int.Parse(Console.ReadLine());
+                    if (product2.StockQuantity >= quantity)
+                    {
+                        Console.WriteLine($"Total Revenue: {quantity * product2.Price}");
+                        product2.Sell(quantity);
+                    }
+                    else
+                    {
+                        Console.WriteLine($"You need {quantity - product2.StockQuantity} additional units to fulfill");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid product choice. Please enter 1 or 2.");
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+            }
         }
 
         static void ScholarshipEligibilityCheck()

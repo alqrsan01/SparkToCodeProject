@@ -294,7 +294,27 @@
 
         static void ViewProductDetails()
         {
-
+            Console.Write("Pick one product to view details(1, 2): ");
+            try
+            {
+                int productChoice = int.Parse(Console.ReadLine());
+                if (productChoice == 1)
+                {
+                    product1.GetInventoryValue();
+                }
+                else if (productChoice == 2)
+                {
+                    product2.GetInventoryValue();
+                }
+                else
+                {
+                    Console.WriteLine("Invalid product choice. Please enter 1 or 2.");
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+            }
         }
 
         static void RegisterStudent()

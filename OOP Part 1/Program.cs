@@ -362,12 +362,14 @@
                     Console.Write("Enter email for student 1: ");
                     string studentEmail = Console.ReadLine();
                     student1.Register(studentEmail);
+                    Console.WriteLine("Student registered successfully.");
                 }
                 else if (studentChoice == 2)
                 {
                     Console.Write("Enter email for student 2: ");
                     string studentEmail = Console.ReadLine();
                     student2.Register(studentEmail);
+                    Console.WriteLine("Student registered successfully.");
                 }
                 else
                 {
@@ -858,15 +860,23 @@
 
         static void QuickAccountOpening()
         {
-            Console.Write("Enter account number: ");
-            int accountNumber = int.Parse(Console.ReadLine());
-            Console.Write("Enter holder name: ");
-            string holderName = Console.ReadLine();
-            Console.Write("Enter initial balance: ");
-            double initialBalance = double.Parse(Console.ReadLine());
+            try
+            {
+                Console.Write("Enter account number: ");
+                int accountNumber = int.Parse(Console.ReadLine());
+                Console.Write("Enter holder name: ");
+                string holderName = Console.ReadLine();
+                Console.Write("Enter initial balance: ");
+                double initialBalance = double.Parse(Console.ReadLine());
 
-            BankAccount newAccount = new BankAccount(accountNumber, holderName, initialBalance);
-            newAccount.CheckBalance();
+                BankAccount newAccount = new BankAccount(accountNumber, holderName, initialBalance);
+                newAccount.CheckBalance();
+            }
+            catch
+            {
+                Console.WriteLine("Invalid input. Please enter valid account number, holder name, and initial balance.");
+            }
+            
         }
 
         static void TotalStudentsCounter()

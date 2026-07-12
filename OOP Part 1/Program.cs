@@ -232,12 +232,38 @@
 
         static void MakeDeposit()
         {
-
+            Console.Write("Pick one account to make a deposit(1, 2): ");
+            try
+            {
+                int accountChoice = int.Parse(Console.ReadLine());
+                if (accountChoice == 1)
+                {
+                    Console.Write("Enter deposit amount for account 1: ");
+                    double amount = double.Parse(Console.ReadLine());
+                    account1.Deposit(amount);
+                    account1.CheckBalance();
+                }
+                else if (accountChoice == 2)
+                {
+                    Console.Write("Enter deposit amount for account 2: ");
+                    double amount = double.Parse(Console.ReadLine());
+                    account2.Deposit(amount);
+                    account2.CheckBalance();
+                }
+                else
+                {
+                    Console.WriteLine("Invalid account choice. Please enter 1 or 2.");
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+            }
         }
 
         static void MakeWithdrawal()
         {
-
+            
         }
 
         static void ViewProductDetails()

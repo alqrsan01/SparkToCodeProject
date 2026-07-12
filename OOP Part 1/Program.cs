@@ -40,6 +40,11 @@
         {
             Console.WriteLine("Email notification sent.");
         }
+
+        public bool IsOverdrawn
+        {
+            get { return Balance < 0; }
+        }
     }
 
     public class Student
@@ -864,7 +869,41 @@
 
         static void OverdrawnAccountCheck()
         {
-
+            Console.Write("Pick one account to check if overdrawn(1, 2): ");
+            try
+            {
+                int accountChoice = int.Parse(Console.ReadLine());
+                if (accountChoice == 1)
+                {
+                    if (account1.IsOverdrawn)
+                    {
+                        Console.WriteLine("Account is overdrawn.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Account is not overdrawn.");
+                    }
+                }
+                else if (accountChoice == 2)
+                {
+                    if (account2.IsOverdrawn)
+                    {
+                        Console.WriteLine("Account is overdrawn.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Account is not overdrawn.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid account choice. Please enter 1 or 2.");
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+            }
         }
 
         static void SetStudentSecurityPin()

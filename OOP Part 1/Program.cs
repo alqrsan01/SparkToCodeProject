@@ -526,7 +526,47 @@
 
         static void StudentReportCard()
         {
-
+            Console.Write("Pick one student to view report card(1, 2): ");
+            try
+            {
+                int studentChoice = int.Parse(Console.ReadLine());
+                if (studentChoice == 1)
+                {
+                    Console.WriteLine($"Student Name: {student1.Name}");
+                    Console.WriteLine($"Address: {student1.Address}");
+                    Console.WriteLine($"Grade: {student1.Grade}");
+                    if (student1.Grade >= 60)
+                    {
+                        Console.WriteLine("status: Pass");
+                    }
+                    else
+                    {
+                        Console.WriteLine("status: Fail");
+                    }
+                }
+                else if (studentChoice == 2)
+                {
+                    Console.WriteLine($"Student Name: {student2.Name}");
+                    Console.WriteLine($"Address: {student2.Address}");
+                    Console.WriteLine($"Grade: {student2.Grade}");
+                    if (student2.Grade >= 60)
+                    {
+                        Console.WriteLine("status: Pass");
+                    }
+                    else
+                    {
+                        Console.WriteLine("status: Fail");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid student choice. Please enter 1 or 2.");
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+            }
         }
 
         static void AccountHealthStatus()

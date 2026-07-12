@@ -571,7 +571,49 @@
 
         static void AccountHealthStatus()
         {
-
+            Console.Write("Pick one account to check health status(1, 2): ");
+            try
+            {
+                int accountChoice = int.Parse(Console.ReadLine());
+                if (accountChoice == 1)
+                {
+                    if (account1.Balance < 50)
+                    {
+                        Console.WriteLine("Low Balance");
+                    }
+                    else if (account1.Balance >= 50 && account1.Balance < 1000)
+                    {
+                        Console.WriteLine("Healthy");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Premium");
+                    }
+                }
+                else if (accountChoice == 2)
+                {
+                    if (account2.Balance < 50)
+                    {
+                        Console.WriteLine("Low Balance");
+                    }
+                    else if (account2.Balance >= 50 && account2.Balance < 1000)
+                    {
+                        Console.WriteLine("Healthy");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Premium");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid account choice. Please enter 1 or 2.");
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+            }
         }
 
         static void BulkSaleWithRevenue()

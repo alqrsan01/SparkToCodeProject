@@ -76,6 +76,14 @@
 
     public class Program
     {
+        static BankAccount account1 = new BankAccount { AccountNumber = 1163, HolderName = "Hassan", Balance = 5000.00 };
+        static BankAccount account2 = new BankAccount { AccountNumber = 15203, HolderName = "Ali", Balance = 3000.00 };
+
+        static Student srudent1 = new Student { Name = "Ali", Address = "Muscat", Grade = 65 };
+        static Student srudent2 = new Student { Name = "Mohammed", Address = "Salalah", Grade = 75 };
+
+        static Product product1 = new Product { ProductName = "Laptop", Price = 1000.00, StockQuantity = 10 };
+        static Product product2 = new Product { ProductName = "Smartphone", Price = 500.00, StockQuantity = 20 };
         static void Main(string[] args)
         {
             bool exitApp = false;

@@ -41,15 +41,16 @@
         public string Name { get; set; }
         public string Address { get; set; }
         private string Email { get; set; }
-        int age { get; set; }
+        int Age { get; set; }
 
-        public void Register(string Email)
+        public void Register(string email)
         {
-
+            this.Email = email;
+            SendEmail();
         }
         private void SendEmail()
         {
-
+            Console.WriteLine("Email notification sent.");
         }
     }
 
@@ -61,23 +62,35 @@
 
         public void Sell(int quantity)
         {
-
+            if (StockQuantity >= quantity)
+            {
+                StockQuantity -= quantity;
+            }
+            else
+            {
+                Console.WriteLine("not enough stock");
+            }
+            LogTransaction();
         }
         public void Restock(int quantity)
         {
-
+            StockQuantity += quantity;
+            LogTransaction();
         }
         public double GetInventoryValue()
         {
+            PrintDetails();
             return Price * StockQuantity;
         }
         private void PrintDetails()
         {
-
+            Console.WriteLine($"Product Name: {ProductName}");
+            Console.WriteLine($"Price: {Price}");
+            Console.WriteLine($"Stock Quantity: {StockQuantity}");
         }
         private void LogTransaction()
         {
-
+            Console.WriteLine("Transaction logged.");
         }
     }
 

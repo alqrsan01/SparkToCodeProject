@@ -59,6 +59,18 @@
         {
             Console.WriteLine("Email notification sent.");
         }
+
+        private static int totalStudents = 0;
+
+        public Student()
+        {
+            totalStudents++;
+        }
+
+        public static int GetTotalStudents()
+        {
+            return totalStudents;
+        }
     }
 
     public class Product
@@ -103,8 +115,8 @@
 
     public class Program
     {
-        static BankAccount account1 = new BankAccount { AccountNumber = 1163, HolderName = "Hassan", Balance = 5000.00 };
-        static BankAccount account2 = new BankAccount { AccountNumber = 15203, HolderName = "Ali", Balance = 3000.00 };
+        static BankAccount account1 = new BankAccount(1163,"Hassan",5000.00);
+        static BankAccount account2 = new BankAccount(15203, "Ali", 3000.00);
 
         static Student student1 = new Student { Name = "Ali", Address = "Muscat", Grade = 65 };
         static Student student2 = new Student { Name = "Mohammed", Address = "Salalah", Grade = 75 };
@@ -844,7 +856,7 @@
 
         static void TotalStudentsCounter()
         {
-
+            Console.WriteLine($"Total number of students: {Student.GetTotalStudents()}");
         }
 
         static void OverdrawnAccountCheck()

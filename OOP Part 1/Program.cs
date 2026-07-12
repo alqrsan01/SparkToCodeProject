@@ -118,13 +118,16 @@
         static BankAccount account1 = new BankAccount(1163,"Hassan",5000.00);
         static BankAccount account2 = new BankAccount(15203, "Ali", 3000.00);
 
-        static Student student1 = new Student { Name = "Ali", Address = "Muscat", Grade = 65 };
-        static Student student2 = new Student { Name = "Mohammed", Address = "Salalah", Grade = 75 };
+        static Student student1;
+        static Student student2;
 
         static Product product1 = new Product { ProductName = "Laptop", Price = 1000.00, StockQuantity = 10 };
         static Product product2 = new Product { ProductName = "Smartphone", Price = 500.00, StockQuantity = 20 };
         static void Main(string[] args)
         {
+            student1 = new Student { Name = "Ali", Address = "Muscat", Grade = 65 };
+            student2 = new Student { Name = "Mohammed", Address = "Salalah", Grade = 75 };
+
             bool exitApp = false;
 
             while (exitApp == false)

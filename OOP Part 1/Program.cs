@@ -663,7 +663,118 @@
 
         static void ScholarshipEligibilityCheck()
         {
-
+            Console.Write("Pick one student to check scholarship eligibility(1, 2): ");
+            int studentChoice = int.Parse(Console.ReadLine());
+            if (studentChoice == 1)
+            {
+                Console.WriteLine("Pick account to check scholarship eligibility(1, 2): ");
+                int accountChoice = int.Parse(Console.ReadLine());
+                if (accountChoice == 1)
+                {
+                    if (student1.Grade >= 80 && account1.Balance >= 100)
+                    {
+                        Console.WriteLine("Eligible");
+                    }
+                    else
+                    {
+                        if (student1.Grade < 80 && account1.Balance < 100)
+                        {
+                            Console.WriteLine("Not Eligible due to low grade and low balance");
+                        }
+                        else if (student1.Grade < 80)
+                        {
+                            Console.WriteLine("Not Eligible due to low grade");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Not Eligible due to low balance");
+                        }
+                    }
+                }
+                else if (accountChoice == 2)
+                {
+                    if (student1.Grade >= 80 && account2.Balance >= 100)
+                    {
+                        Console.WriteLine("Eligible");
+                    }
+                    else
+                    {
+                        if (student1.Grade < 80 && account2.Balance < 100)
+                        {
+                            Console.WriteLine("Not Eligible due to low grade and low balance");
+                        }
+                        else if (student1.Grade < 80)
+                        {
+                            Console.WriteLine("Not Eligible due to low grade");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Not Eligible due to low balance");
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid account choice. Please enter 1 or 2.");
+                }
+            }
+            else if (studentChoice == 2)
+            {
+                Console.WriteLine("Pick account to check scholarship eligibility(1, 2): ");
+                int accountChoice = int.Parse(Console.ReadLine());
+                if (accountChoice == 1)
+                {
+                    if (student2.Grade >= 80 && account1.Balance >= 100)
+                    {
+                        Console.WriteLine("Eligible");
+                    }
+                    else
+                    {
+                        if (student2.Grade < 80 && account1.Balance < 100)
+                        {
+                            Console.WriteLine("Not Eligible due to low grade and low balance");
+                        }
+                        else if (student2.Grade < 80)
+                        {
+                            Console.WriteLine("Not Eligible due to low grade");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Not Eligible due to low balance");
+                        }
+                    }
+                }
+                else if (accountChoice == 2)
+                {
+                    if (student2.Grade >= 80 && account2.Balance >= 100)
+                    {
+                        Console.WriteLine("Eligible");
+                    }
+                    else
+                    {
+                        if (student2.Grade < 80 && account2.Balance < 100)
+                        {
+                            Console.WriteLine("Not Eligible due to low grade and low balance");
+                        }
+                        else if (student2.Grade < 80)
+                        {
+                            Console.WriteLine("Not Eligible due to low grade");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Not Eligible due to low balance");
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid account choice. Please enter 1 or 2.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid student choice. Please enter 1 or 2.");
+            }
         }
 
         static void FullBalanceTopUpFlow()

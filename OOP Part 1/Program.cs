@@ -46,6 +46,34 @@
         }
     }
 
+    public class Product
+    {
+        public string ProductName { get; set; }
+        public double Price { get; set; }
+        public int StockQuantity { get; set; }
+
+        public void Sell(int quantity)
+        {
+
+        }
+        public void Restock(int quantity)
+        {
+
+        }
+        public double GetInventoryValue()
+        {
+            return Price * StockQuantity;
+        }
+        private void PrintDetails()
+        {
+
+        }
+        private void LogTransaction()
+        {
+
+        }
+    }
+
     public class Program
     {
         static void Main(string[] args)

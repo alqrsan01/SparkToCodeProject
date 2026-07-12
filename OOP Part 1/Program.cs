@@ -76,6 +76,13 @@
         {
             return totalStudents;
         }
+
+        private int pin;
+
+        public int Pin
+        {
+            set { pin = value; }
+        }
     }
 
     public class Product
@@ -908,7 +915,47 @@
 
         static void SetStudentSecurityPin()
         {
-
+            Console.Write("Pick one student to set security PIN(1, 2): ");
+            try
+            {
+                int studentChoice = int.Parse(Console.ReadLine());
+                if (studentChoice == 1)
+                {
+                    Console.Write("Enter new security PIN for student 1: ");
+                    int newPin = int.Parse(Console.ReadLine());
+                    if (newPin >= 1000 && newPin <= 9999)
+                    {
+                        student1.Pin = newPin;
+                        Console.WriteLine("Security PIN set successfully for student 1.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid PIN. Please enter a 4-digit number.");
+                    }
+                }
+                else if (studentChoice == 2)
+                {
+                    Console.Write("Enter new security PIN for student 2: ");
+                    int newPin = int.Parse(Console.ReadLine());
+                    if (newPin >= 1000 && newPin <= 9999)
+                    {
+                        student2.Pin = newPin;
+                        Console.WriteLine("Security PIN set successfully for student 2.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid PIN. Please enter a 4-digit number.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid student choice. Please enter 1 or 2.");
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+            }
         }
     }
 }

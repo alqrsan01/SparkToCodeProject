@@ -177,7 +177,27 @@
         }
         static void ViewAccountDetails()
         {
-            
+            Console.Write("Pick one account to view details(1, 2): ");
+            try
+            {
+                int accountChoice = int.Parse(Console.ReadLine());
+                if (accountChoice == 1)
+                {
+                    account1.CheckBalance();
+                }
+                else if (accountChoice == 2) 
+                {
+                    account2.CheckBalance();
+                }
+                else
+                {
+                    Console.WriteLine("Invalid account choice. Please enter 1 or 2.");
+                }
+            } 
+            catch
+            {
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+            }
         }
         static void UpdateStudentAddress()
         {

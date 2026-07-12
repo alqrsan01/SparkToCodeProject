@@ -319,7 +319,31 @@
 
         static void RegisterStudent()
         {
-
+            Console.Write("Pick one student to register(1, 2): ");
+            try
+            {
+                int studentChoice = int.Parse(Console.ReadLine());
+                if (studentChoice == 1)
+                {
+                    Console.Write("Enter email for student 1: ");
+                    string studentEmail = Console.ReadLine();
+                    student1.Register(studentEmail);
+                }
+                else if (studentChoice == 2)
+                {
+                    Console.Write("Enter email for student 2: ");
+                    string studentEmail = Console.ReadLine();
+                    student2.Register(studentEmail);
+                }
+                else
+                {
+                    Console.WriteLine("Invalid student choice. Please enter 1 or 2.");
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+            }
         }
 
         static void CompareAccountBalances()

@@ -132,6 +132,9 @@
                     case 11:
                         CheckOutGuest(rooms, guests);
                         break;
+                    case 12:
+                        RemoveUnavailableRooms(rooms, guests);
+                        break;
                     case 0:
                         exit = false;
                         Console.WriteLine("Exiting the program. Goodbye!");
@@ -476,6 +479,40 @@
             Console.WriteLine($"Guest {guest.GuestName} checked out successfully.");
             Console.WriteLine($"Room {guest.RoomNumber} is now available: {rooms.Any(r => r.RoomNumber == roomNumber && r.IsAvailable)}");
             Console.WriteLine($"Remaining guests: {guests.Count}");
+        }
+
+        static void RemoveUnavailableRooms(List<Room> rooms, List<Guest> guests)
+        {
+            var removable = rooms.Where(r => !r.IsAvailable && !guests.Any(g => g.RoomNumber == r.RoomNumber.ToString())).OrderBy(r => r.RoomNumber).ToList();
+            if (!removable.Any())
+            {
+                Console.WriteLine("All unavailable rooms are currently booked or no available rooms to remove.");
+                return;
+            }
+
+            Console.WriteLine($"Safely removable rooms ({removable.Count})");
+            foreach (var r in removable)
+            {
+                Console.WriteLine($"Room {r.RoomNumber}, {r.RoomType}, {r.PricePerNight:F2}");
+            }
+
+            Console.Write($"Remove these {removable.Count} rooms? (Y/N): ");
+            string confirm = Console.ReadLine().ToUpper();
+            if (confirm != "Y")
+            {
+                Console.WriteLine("Removal cancelled.");
+                return;
+            }
+
+            rooms.RemoveAll(r => !r.IsAvailable && !guests.Any(g => g.RoomNumber == r.RoomNumber.ToString()));
+
+            Console.WriteLine($"Room removed. Remaining rooms: {rooms.Count}");
+
+            var summary = rooms.Select(r => $"Room {r.RoomNumber} ({r.RoomType})");
+            foreach (var line in summary)
+            {
+                Console.WriteLine(line);
+            }
         }
     }
 }

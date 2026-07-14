@@ -114,6 +114,9 @@
                     case 5:
                         ViewAllGuests(guests);
                         break;
+                    case 6:
+                        SearchAndFilterRooms(rooms);
+                        break;
                     case 0:
                         exit = false;
                         Console.WriteLine("Exiting the program. Goodbye!");
@@ -227,6 +230,89 @@
             foreach (var guest in sorted)
             {
                 guest.DisplayGuest();
+            }
+        }
+
+        static void SearchAndFilterRooms(List<Room> rooms)
+        {
+            bool exitsub = true;
+            while (exitsub)
+            {
+                Console.WriteLine("===== Search and Filter Rooms =====");
+                Console.WriteLine("1. Show all available rooms");
+                Console.WriteLine("2. Filter by room type");
+                Console.WriteLine("3. Filter by max price");
+                Console.WriteLine("4. Room price statistics");
+                Console.WriteLine("0. Back");
+                Console.Write("Enter your choice: ");
+
+                int choicesub = int.Parse(Console.ReadLine());
+                switch (choicesub)
+                {
+                    case 1:
+                        var available = rooms.Where(r => r.IsAvailable).OrderBy(r => r.PricePerNight);
+                        Console.WriteLine($"Available rooms: {available.Count()}");
+                        if (!available.Any())
+                        {
+                            Console.WriteLine("No available rooms");
+                        }
+                        else
+                        {
+                            foreach (var r in available)
+                            {
+                                r.DisplayRoom();
+                            }
+                        }
+                        break;
+                    case 2:
+                        Console.Write("Enter room type (Single / Double / Suite): ");
+                        string type = Console.ReadLine();
+                        var bytype = rooms.Where(r => r.RoomType.Equals(type, StringComparison.OrdinalIgnoreCase)).OrderBy(r => r.RoomNumber);
+                        Console.WriteLine($"Rooms of type {type}: {bytype.Count()}");
+                        if (!bytype.Any())
+                        {
+                            Console.WriteLine("No rooms found of this type");
+                        }
+                        else
+                        {
+                            foreach (var r in bytype)
+                            {
+                                r.DisplayRoom();
+                            }
+                        }
+                        break;
+                    case 3:
+                        Console.Write("Enter maximum price per night: ");
+                        double maxPrice = double.Parse(Console.ReadLine());
+                        var byPrice = rooms.Where(r => r.IsAvailable && r.PricePerNight <= maxPrice).OrderBy(r => r.PricePerNight);
+                        Console.WriteLine($"Available rooms under {maxPrice}: {byPrice.Count()}");
+                        if (!byPrice.Any())
+                        {
+                            Console.WriteLine("No available rooms under this price");
+
+                        }
+                        else
+                        {
+                            foreach (var r in byPrice)
+                            {
+                                r.DisplayRoom();
+                            }
+                        }
+                        break;
+                    case 4:
+                        Console.WriteLine($"Total rooms: {rooms.Count}");
+                        Console.WriteLine($"Available rooms: {rooms.Count(r => r.IsAvailable)}");
+                        Console.WriteLine($"Average price: {rooms.Average(r => r.PricePerNight):F2}");
+                        Console.WriteLine($"Cheapest room: {rooms.Min(r => r.PricePerNight):F2}");
+                        Console.WriteLine($"Most expensive room: {rooms.Max(r => r.PricePerNight):F2}");
+                        break;
+                    case 0:
+                        exitsub = false;
+                        break;
+                    default: 
+                        Console.WriteLine("Invalid choice. Please try again.");
+                        break;
+                }
             }
         }
     }

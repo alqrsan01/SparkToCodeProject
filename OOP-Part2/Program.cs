@@ -117,6 +117,9 @@
                     case 6:
                         SearchAndFilterRooms(rooms);
                         break;
+                    case 7:
+                        GuestAndBookingStatistice(rooms, guests);
+                        break;
                     case 0:
                         exit = false;
                         Console.WriteLine("Exiting the program. Goodbye!");
@@ -313,6 +316,37 @@
                         Console.WriteLine("Invalid choice. Please try again.");
                         break;
                 }
+            }
+        }
+
+        static void GuestAndBookingStatistice(List<Room> rooms, List<Guest> guests)
+        {
+            Console.WriteLine($"Total registered guests: {guests.Count}");
+            Console.WriteLine($"Guest with active booking: {guests.Count(g => g.RoomNumber != "Not Assigned")}");
+            Console.WriteLine($"Total rooms: {rooms.Count}");
+            Console.WriteLine($"Currently booked rooms: {rooms.Count(r => !r.IsAvailable)}");
+
+            var activeGuests = guests.Where(g => g.RoomNumber != "Not Assigned");
+            if (!activeGuests.Any())
+            {
+                Console.WriteLine("No active bookings.");
+                return;
+            }
+
+            Console.WriteLine($"Average nights (active booking): {activeGuests.Average(g => g.TotalNights):F1}");
+            Console.WriteLine("Top 3 hightest spending guests");
+            
+            var top3 = activeGuests.OrderByDescending(g => g.CalculateTotalCost()).Take(3);
+            foreach (var g in top3) {
+                Console.WriteLine($"{g.GuestName}, Room: {g.RoomNumber}, Total: {g.CalculateTotalCost():F2}");
+            }
+
+            Console.WriteLine("Active booking summary");
+
+            var summaries = activeGuests.Select(g => $"{g.GuestName} — Room {g.RoomNumber} — {g.TotalNights} nights — OMR {g.CalculateTotalCost():F2}");
+            foreach (var summary in summaries)
+            {
+                Console.WriteLine(summary);
             }
         }
     }

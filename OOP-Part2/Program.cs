@@ -143,6 +143,9 @@ namespace OOP_Part2
                     case 14:
                         HighestRevenueBooking(guests);
                         break;
+                    case 15:
+                        GuestPaginationViewer(guests);
+                        break;  
                     case 0:
                         exit = false;
                         Console.WriteLine("Exiting the program. Goodbye!");
@@ -576,5 +579,33 @@ namespace OOP_Part2
             Console.WriteLine($"Room: {top.RoomNumber}");
             Console.WriteLine($"Total Cost: {top.TotalCost:F2}");
         }
+
+        static void GuestPaginationViewer(List<Guest> guests)
+        {
+            if (!guests.Any())
+            {
+                Console.WriteLine("No guests registered.");
+                return;
+            }
+
+            const int pageSize = 3;
+            int totalPages = (int)Math.Ceiling(guests.Count / (double)pageSize);
+
+            Console.WriteLine($"Total guests: {guests.Count}, Page size: {pageSize}, Total pages: {totalPages}");
+            Console.Write($"Enter page number (1 - {totalPages}): ");
+            int page = int.Parse(Console.ReadLine());
+            if (page < 1 || page > totalPages)
+            {
+                Console.WriteLine("Invalid page number.");
+                return;
+            }
+
+            var pageGuests = guests.Skip((page - 1) * pageSize).Take(pageSize);
+            Console.WriteLine($"--- Page {page} of {totalPages} ---");
+            foreach (var g in pageGuests)
+            {
+                g.DisplayGuest();
+            }
+        } 
     }
 }

@@ -120,6 +120,9 @@
                     case 7:
                         GuestAndBookingStatistice(rooms, guests);
                         break;
+                    case 8:
+                        UpdateRoomPrice(rooms);
+                        break;
                     case 0:
                         exit = false;
                         Console.WriteLine("Exiting the program. Goodbye!");
@@ -348,6 +351,31 @@
             {
                 Console.WriteLine(summary);
             }
+        }
+
+        static void UpdateRoomPrice(List<Room> rooms)
+        {
+            Console.Write("Enter room number: ");
+            int roomNumber = int.Parse(Console.ReadLine());
+            Room room = rooms.FirstOrDefault(r => r.RoomNumber == roomNumber);
+            if (room == null)
+            {
+                Console.WriteLine("Room not found.");
+                return;
+            }
+
+            double oldPrice = room.PricePerNight;
+            Console.Write("Enter new price per night: ");
+            double newPrice = double.Parse(Console.ReadLine());
+            if (newPrice <= 0)
+            {
+                Console.WriteLine("Price must be greater than 0.");
+                return;
+            }
+            room.PricePerNight = newPrice;
+
+            Console.WriteLine($"Price updated for room {roomNumber}");
+            Console.WriteLine($"Old price: {oldPrice}, New price: {newPrice}");
         }
     }
 }

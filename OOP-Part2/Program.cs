@@ -16,7 +16,8 @@
         }
         public void DisplayRoom()
         {
-
+            string status = IsAvailable ? "Available" : "Booked";
+            Console.WriteLine($"Room: {RoomNumber}, Type: {RoomType}, Price: {PricePerNight}, Status: {status}");
         }
     }
 
@@ -107,6 +108,9 @@
                     case 3:
                         BookRoomForGuest(rooms, guests);
                         break;
+                    case 4:
+                        ViewAllRooms(rooms);
+                        break;
                     case 0:
                         exit = false;
                         Console.WriteLine("Exiting the program. Goodbye!");
@@ -187,6 +191,23 @@
             Console.WriteLine($"Booking confirmed!");
             Console.WriteLine($"Guest: {guest.GuestName}, Room: {room.RoomNumber}, Type: {room.RoomType}");
             Console.WriteLine($"Price: {room.PricePerNight}, Nights: {guest.TotalNights}, Total: {guest.CalculateTotalCost()}");
+        }
+
+        static void ViewAllRooms(List<Room> rooms)
+        {
+            if (!rooms.Any())
+            {
+                Console.WriteLine("No rooms available.");
+                return;
+            }
+
+            Console.WriteLine($"Total rooms: {rooms.Count}");
+            
+            var sorted = rooms.OrderBy(r => r.RoomNumber);
+            foreach (var room in sorted)
+            {
+                room.DisplayRoom();
+            }
         }
     }
 }

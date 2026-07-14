@@ -1,4 +1,6 @@
-﻿namespace OOP_Part2
+﻿using System.Security.Authentication.ExtendedProtection;
+
+namespace OOP_Part2
 {
     public class Room
     {
@@ -123,7 +125,7 @@
                     case 8:
                         UpdateRoomPrice(rooms);
                         break;
-                    case 9: 
+                    case 9:
                         GuestLookupByName(guests);
                         break;
                     case 10:
@@ -135,6 +137,9 @@
                     case 12:
                         RemoveUnavailableRooms(rooms, guests);
                         break;
+                    case 13:
+                        ExtendGuestStay(guests);
+                        break;
                     case 0:
                         exit = false;
                         Console.WriteLine("Exiting the program. Goodbye!");
@@ -143,7 +148,7 @@
                         Console.WriteLine("Invalid choice. Please try again.");
                         break;
                 }
-                
+
             }
         }
 
@@ -226,7 +231,7 @@
             }
 
             Console.WriteLine($"Total rooms: {rooms.Count}");
-            
+
             var sorted = rooms.OrderBy(r => r.RoomNumber);
             foreach (var room in sorted)
             {
@@ -243,7 +248,7 @@
             }
 
             Console.WriteLine($"Total guests: {guests.Count}");
-            
+
             var sorted = guests.OrderBy(g => g.GuestName);
             foreach (var guest in sorted)
             {
@@ -327,7 +332,7 @@
                     case 0:
                         exitsub = false;
                         break;
-                    default: 
+                    default:
                         Console.WriteLine("Invalid choice. Please try again.");
                         break;
                 }
@@ -350,9 +355,10 @@
 
             Console.WriteLine($"Average nights (active booking): {activeGuests.Average(g => g.TotalNights):F1}");
             Console.WriteLine("Top 3 hightest spending guests");
-            
+
             var top3 = activeGuests.OrderByDescending(g => g.CalculateTotalCost()).Take(3);
-            foreach (var g in top3) {
+            foreach (var g in top3)
+            {
                 Console.WriteLine($"{g.GuestName}, Room: {g.RoomNumber}, Total: {g.CalculateTotalCost():F2}");
             }
 
@@ -394,7 +400,7 @@
         {
             Console.Write("Enter name to search: ");
             string name = Console.ReadLine();
-         
+
             var matches = guests.Where(g => g.GuestName.Contains(name, StringComparison.OrdinalIgnoreCase));
             if (!matches.Any())
             {
@@ -434,7 +440,7 @@
         {
             Console.Write("Enter guest ID to check out: ");
             string guestId = Console.ReadLine();
-            
+
             Guest guest = guests.FirstOrDefault(g => g.GuestId == guestId);
             if (guest == null)
             {
@@ -461,14 +467,14 @@
             Console.WriteLine($"total cost: {guest.CalculateTotalCost():F2}");
             Console.WriteLine("--------------------");
             Console.Write("Confirm check-out? (y/n): ");
-            
+
             string confirm = Console.ReadLine().ToUpper();
             if (confirm != "Y")
             {
                 Console.WriteLine("Check-out cancelled.");
                 return;
             }
-            
+
             if (room != null)
             {
                 room.IsAvailable = true;
@@ -513,6 +519,41 @@
             {
                 Console.WriteLine(line);
             }
+        }
+
+        static void ExtendGuestStay(List<Guest> guests)
+        {
+            Console.Write("Enter guest ID: ");
+            string guestId = Console.ReadLine();
+            Guest guest = guests.FirstOrDefault(g => g.GuestId == guestId);
+            if (guest == null)
+            {
+                Console.WriteLine("Guest not found.");
+                return;
+            }
+
+            if (guest.RoomNumber == "Not Assigned")
+            {
+                Console.WriteLine("Guest has no active booking.");
+                return;
+            }
+
+            Console.Write("Enter additional nights: ");
+            int extraNights = int.Parse(Console.ReadLine());
+            if (extraNights <= 0)
+            {
+                Console.WriteLine("Additional nights must be greater than 0.");
+                return;
+            }
+
+            int oldNights = guest.TotalNights;
+            guest.TotalNights += extraNights;
+
+            Console.WriteLine($"Stay extended for {guest.GuestName}");
+            Console.WriteLine($"Previous nights: {oldNights}");
+            Console.WriteLine($"Added nights: {extraNights}");
+            Console.WriteLine($"New total nights: {guest.TotalNights}");
+            Console.WriteLine($"New total cost: {guest.CalculateTotalCost():F2}");
         }
     }
 }

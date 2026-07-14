@@ -104,6 +104,9 @@
                     case 2:
                         RegisterNewGuest(guests);
                         break;
+                    case 3:
+                        BookRoomForGuest(rooms, guests);
+                        break;
                     case 0:
                         exit = false;
                         Console.WriteLine("Exiting the program. Goodbye!");
@@ -149,6 +152,41 @@
             string guestId = $"G{(guests.Count + 1):D3}";
             guests.Add(new Guest(guestId, guestName, checkInDate, totalNights));
             Console.WriteLine($"Guest registered! ID: {guestId}, Name: {guestName}, Nights: {totalNights}");
+        }
+
+        static void BookRoomForGuest(List<Room> rooms, List<Guest> guests)
+        {
+            Console.Write("Enter guest ID (e.g. G001): ");
+            string guestId = Console.ReadLine();
+            Guest guest = guests.FirstOrDefault(g => g.GuestId == guestId);
+            if (guest == null)
+            {
+                Console.WriteLine("Guest not found.");
+                return;
+            }
+
+            Console.Write("Enter room number to book: ");
+            int roomNumber = int.Parse(Console.ReadLine());
+            Room room = rooms.FirstOrDefault(r => r.RoomNumber == roomNumber);
+            if (room == null)
+            {
+                Console.WriteLine("Room not found.");
+                return;
+            }
+
+            if (!room.IsAvailable)
+            {
+                Console.WriteLine("Room is not available.");
+                return;
+            }
+
+            guest.RoomNumber = roomNumber.ToString();
+            guest.PricePerNight = room.PricePerNight;
+            room.IsAvailable = false;
+
+            Console.WriteLine($"Booking confirmed!");
+            Console.WriteLine($"Guest: {guest.GuestName}, Room: {room.RoomNumber}, Type: {room.RoomType}");
+            Console.WriteLine($"Price: {room.PricePerNight}, Nights: {guest.TotalNights}, Total: {guest.CalculateTotalCost()}");
         }
     }
 }

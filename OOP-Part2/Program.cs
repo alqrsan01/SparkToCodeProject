@@ -41,7 +41,7 @@
         }
         public void DisplayGuest()
         {
-
+            Console.WriteLine($"ID: {GuestId} | Name: {GuestName} | Room: {RoomNumber} | Check-in: {CheckIndate} | Nights: {TotalNights}");
         }
         public double CalculateTotalCost()
         {
@@ -110,6 +110,9 @@
                         break;
                     case 4:
                         ViewAllRooms(rooms);
+                        break;
+                    case 5:
+                        ViewAllGuests(guests);
                         break;
                     case 0:
                         exit = false;
@@ -207,6 +210,23 @@
             foreach (var room in sorted)
             {
                 room.DisplayRoom();
+            }
+        }
+
+        static void ViewAllGuests(List<Guest> guests)
+        {
+            if (!guests.Any())
+            {
+                Console.WriteLine("No guests registered.");
+                return;
+            }
+
+            Console.WriteLine($"Total guests: {guests.Count}");
+            
+            var sorted = guests.OrderBy(g => g.GuestId);
+            foreach (var guest in sorted)
+            {
+                guest.DisplayGuest();
             }
         }
     }

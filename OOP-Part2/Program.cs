@@ -129,6 +129,9 @@
                     case 10:
                         RoomTypeBreackdownReport(rooms);
                         break;
+                    case 11:
+                        CheckOutGuest(rooms, guests);
+                        break;
                     case 0:
                         exit = false;
                         Console.WriteLine("Exiting the program. Goodbye!");
@@ -422,6 +425,57 @@
             {
                 Console.WriteLine("No rooms in system");
             }
+        }
+
+        static void CheckOutGuest(List<Room> rooms, List<Guest> guests)
+        {
+            Console.Write("Enter guest ID to check out: ");
+            string guestId = Console.ReadLine();
+            
+            Guest guest = guests.FirstOrDefault(g => g.GuestId == guestId);
+            if (guest == null)
+            {
+                Console.WriteLine("Guest not found.");
+                return;
+            }
+
+            if (guest.RoomNumber == "Not Assigned")
+            {
+                Console.WriteLine("Guest has no active booking.");
+                return;
+            }
+
+            int roomNumber = int.Parse(guest.RoomNumber);
+            Room room = rooms.FirstOrDefault(r => r.RoomNumber == roomNumber);
+
+            Console.WriteLine("---- Final Bill ----");
+            Console.WriteLine($"Guest: {guest.GuestName}");
+            Console.WriteLine($"Room number: {room.RoomNumber}");
+            Console.WriteLine($"Room type: {room.RoomType}");
+            Console.WriteLine($"Check-in date: {guest.CheckIndate}");
+            Console.WriteLine($"Total nights: {guest.TotalNights}");
+            Console.WriteLine($"Price per night: {guest.PricePerNight}");
+            Console.WriteLine($"total cost: {guest.CalculateTotalCost():F2}");
+            Console.WriteLine("--------------------");
+            Console.Write("Confirm check-out? (y/n): ");
+            
+            string confirm = Console.ReadLine().ToUpper();
+            if (confirm != "Y")
+            {
+                Console.WriteLine("Check-out cancelled.");
+                return;
+            }
+            
+            if (room != null)
+            {
+                room.IsAvailable = true;
+            }
+
+            guests.Remove(guest);
+
+            Console.WriteLine($"Guest {guest.GuestName} checked out successfully.");
+            Console.WriteLine($"Room {guest.RoomNumber} is now available: {rooms.Any(r => r.RoomNumber == roomNumber && r.IsAvailable)}");
+            Console.WriteLine($"Remaining guests: {guests.Count}");
         }
     }
 }

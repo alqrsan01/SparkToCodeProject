@@ -22,23 +22,29 @@
 
     public class Guest
     {
-        public int GuestId;
+        public string GuestId;
         public string GuestName;
-        public int RoomNumber;
+        public string RoomNumber;
         public string CheckIndate;
         public int TotalNights;
+        public double PricePerNight;
 
         public Guest(string guestId, string guestName, string checkInDate, int totalNights)
         {
-
+            GuestId = guestId;
+            GuestName = guestName;
+            CheckIndate = checkInDate;
+            TotalNights = totalNights;
+            RoomNumber = "Not Assigned";
+            PricePerNight = 0;
         }
         public void DisplayGuest()
         {
 
         }
-        public void CalculateTotalCost()
+        public double CalculateTotalCost()
         {
-
+            return PricePerNight * TotalNights;
         }
     }
     public class Program
@@ -75,7 +81,8 @@
                 Console.WriteLine("13. Extend guest stay");
                 Console.WriteLine("14. Highest revenue booking");
                 Console.WriteLine("15. Guest pagination viewer");
-                Console.WriteLine("16. Exit");
+                Console.WriteLine("0. Exit");
+                Console.WriteLine("===================================");
                 Console.Write("Enter your choice: ");
 
                 int choice;
@@ -92,9 +99,9 @@
                 switch (choice)
                 {
                     case 1:
-                        AddNewRoom();
+                        AddNewRoom(rooms);
                         break;
-                    case 16:
+                    case 0:
                         exit = false;
                         Console.WriteLine("Exiting the program. Goodbye!");
                         break;
@@ -106,9 +113,25 @@
             }
         }
 
-        static void AddNewRoom()
+        static void AddNewRoom(List<Room> rooms)
         {
+            Console.Write("Enter room number: ");
+            int roomNumber = int.Parse(Console.ReadLine());
 
+            bool exists = rooms.Any(r => r.RoomNumber == roomNumber);
+            if (exists)
+            {
+                Console.WriteLine("Room number already exists. Please try again.");
+                return;
+            }
+
+            Console.Write("Enter room type: ");
+            string roomType = Console.ReadLine();
+            Console.Write("Enter price per night: ");
+            double pricePerNight = double.Parse(Console.ReadLine());
+
+            rooms.Add(new Room(roomNumber, roomType, pricePerNight));
+            Console.WriteLine($"Room {roomNumber} added! Total rooms: {rooms.Count}");
         }
     }
 }

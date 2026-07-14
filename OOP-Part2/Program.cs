@@ -223,7 +223,7 @@
 
             Console.WriteLine($"Total guests: {guests.Count}");
             
-            var sorted = guests.OrderBy(g => g.GuestId);
+            var sorted = guests.OrderBy(g => g.GuestName);
             foreach (var guest in sorted)
             {
                 guest.DisplayGuest();

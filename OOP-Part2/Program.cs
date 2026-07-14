@@ -140,6 +140,9 @@ namespace OOP_Part2
                     case 13:
                         ExtendGuestStay(guests);
                         break;
+                    case 14:
+                        HighestRevenueBooking(guests);
+                        break;
                     case 0:
                         exit = false;
                         Console.WriteLine("Exiting the program. Goodbye!");
@@ -554,6 +557,24 @@ namespace OOP_Part2
             Console.WriteLine($"Added nights: {extraNights}");
             Console.WriteLine($"New total nights: {guest.TotalNights}");
             Console.WriteLine($"New total cost: {guest.CalculateTotalCost():F2}");
+        }
+
+        static void HighestRevenueBooking(List<Guest> guests)
+        {
+            var activeGuests = guests.Where(g => g.RoomNumber != "Not Assigned");
+
+            if (!activeGuests.Any())
+            {
+                Console.WriteLine("No active bookings.");
+                return;
+            }
+
+            var top = activeGuests.Select(g => new { g.GuestName, g.RoomNumber, TotalCost = g.CalculateTotalCost() }).OrderByDescending(x => x.TotalCost).Take(1).First();
+
+            Console.WriteLine("---- Highest Revenue Booking ----");
+            Console.WriteLine($"Guest: {top.GuestName}");
+            Console.WriteLine($"Room: {top.RoomNumber}");
+            Console.WriteLine($"Total Cost: {top.TotalCost:F2}");
         }
     }
 }

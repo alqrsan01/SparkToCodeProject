@@ -101,6 +101,9 @@
                     case 1:
                         AddNewRoom(rooms);
                         break;
+                    case 2:
+                        RegisterNewGuest(guests);
+                        break;
                     case 0:
                         exit = false;
                         Console.WriteLine("Exiting the program. Goodbye!");
@@ -132,6 +135,20 @@
 
             rooms.Add(new Room(roomNumber, roomType, pricePerNight));
             Console.WriteLine($"Room {roomNumber} added! Total rooms: {rooms.Count}");
+        }
+
+        static void RegisterNewGuest(List<Guest> guests)
+        {
+            Console.Write("Enter guest name: ");
+            string guestName = Console.ReadLine();
+            Console.Write("Enter check-in date: ");
+            string checkInDate = Console.ReadLine();
+            Console.Write("Enter number of nights: ");
+            int totalNights = int.Parse(Console.ReadLine());
+
+            string guestId = $"G{(guests.Count + 1):D3}";
+            guests.Add(new Guest(guestId, guestName, checkInDate, totalNights));
+            Console.WriteLine($"Guest registered! ID: {guestId}, Name: {guestName}, Nights: {totalNights}");
         }
     }
 }

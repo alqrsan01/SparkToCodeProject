@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="DatabaseTask/Airline Information System - ERD.png" />
+  </Folder>
   <Project Path="C# Fundamentals - Mini Compound Project/C# Fundamentals - Mini Compound Project.csproj" Id="be6e550d-0042-44b0-bd3f-15656872c7f8" />
   <Project Path="C# Fundamentals - Part 1/C# Fundamentals - Part 1.csproj" Id="61814df7-3777-4d4b-979f-0c9fe8cc6a48" />
   <Project Path="C# Fundamentals - Part 2/C# Fundamentals - Part 2.csproj" Id="5f103f56-c211-4d37-8448-0708240c60c4" />

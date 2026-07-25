@@ -24,7 +24,7 @@ namespace EFCoreProject
             //context.employees.Add(e1);
             //context.SaveChanges();
 
-
+            ///////////////////////////////////////////////////
             //Console.WriteLine("Register Employee");
             //Employee e1 = new Employee();
             //Console.Write("Enter First Name: ");
@@ -50,20 +50,21 @@ namespace EFCoreProject
 
             //context.employees.Add(e1);
             //context.SaveChanges();
+            /////////////////////////////////////////////////////////////////
+            //Console.Write("Enter employee id to delete: ");
+            //int employeeIdToDelete = int.Parse(Console.ReadLine());
 
-            Console.Write("Enter employee id to delete: ");
-            int employeeIdToDelete = int.Parse(Console.ReadLine());
-
-            Employee e1 = context.employees.FirstOrDefault(e => e.EmoloyeeId == employeeIdToDelete);
-            if (e1 == null)
-            {
-                Console.WriteLine("Employee not found");
-            }
-            else
-            {
-                context.employees.Remove(e1);
-                context.SaveChanges();
-            }
+            //Employee e1 = context.employees.FirstOrDefault(e => e.EmoloyeeId == employeeIdToDelete);
+            //if (e1 == null)
+            //{
+            //    Console.WriteLine("Employee not found");
+            //}
+            //else
+            //{
+            //    context.employees.Remove(e1);
+            //    context.SaveChanges();
+            //    Console.WriteLine("Employee deleted successfully");
+            //}
         }
     }
 }

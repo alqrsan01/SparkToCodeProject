@@ -9,17 +9,17 @@ namespace EFCoreProject
     public class ProjectContext : DbContext
     {
         // register models
-        public DbSet<Employee> employees;
-        public DbSet<Department> departments;
-        public DbSet<DepartmentLocation> departmentLocations;
-        public DbSet<Project> projects;
-        public DbSet<WorksOn> worksOns;
-        public DbSet<Dependent> dependents;
+        public DbSet<Employee> employees { get; set; }
+        public DbSet<Department> departments { get; set; }
+        public DbSet<DepartmentLocation> departmentLocations { get; set; }
+        public DbSet<Project> projects { get; set; }
+        public DbSet<WorksOn> worksOns { get; set; }
+        public DbSet<Dependent> dependents { get; set; }
 
         // connect to database
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseSqlServer("Server=Alqrsan\\SQLEXPRESS;Database=CompanyProjectDB;Trusted_Connection=True;TrustServerCertification=True;");
+            options.UseSqlServer("Server=Alqrsan\\SQLEXPRESS;Database=CompanyProjectDB;Trusted_Connection=True;TrustServerCertificate=True;");
         }
     }
 }

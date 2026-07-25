@@ -4,7 +4,12 @@ using System.Text;
 
 namespace EFCoreProject.Models
 {
-    internal class Department
+    public class Department
     {
+        public int DepartmentId;
+        public int DepartmentNumber;
+        public string DepartmentName;
+        public int ManagerSsn;
+        public string ManagerStartDate;
     }
 }

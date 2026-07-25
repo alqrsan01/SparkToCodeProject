@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace EFCoreProject.Models
 {
     public class Department
     {
-        public int DepartmentId;
-        public int DepartmentNumber;
-        public string DepartmentName;
-        public int ManagerSsn;
-        public string ManagerStartDate;
+        [Key]
+        public int DepartmentId { get; set; }
+        public int DepartmentNumber { get; set; }
+        public string DepartmentName { get; set; }
+        public int ManagerSsn { get; set; }
+        public string ManagerStartDate { get; set; }
     }
 }

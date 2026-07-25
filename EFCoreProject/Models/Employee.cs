@@ -1,21 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace EFCoreProject.Models
 {
     public class Employee
     {
-        public int EmoloyeeId;
-        public string Fname;
-        public string Minit;
-        public string Lname;
-        public int Ssn;
-        public string Bdate;
-        public string Address;
-        public char Sex;
-        public int Super_ssn;
-        public int DepartmentNumber;
-        public double Salary;
+        [Key]
+        public int EmoloyeeId { get; set; }
+        public string Fname { get; set; }
+        public string Minit { get; set; }
+        public string Lname { get; set; }
+        public int Ssn { get; set; }
+        public string Bdate { get; set; }
+        public string Address { get; set; }
+        public char Sex { get; set; }
+        public int Super_ssn { get; set; }
+        public int DepartmentNumber { get; set; }
+        public double Salary { get; set; }
     }
 }

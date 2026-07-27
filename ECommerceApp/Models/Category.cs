@@ -11,5 +11,8 @@ namespace ECommerceApp.Models
         public int CategoryId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+
+        // has relation
+        public List<Product> Products { get; set; }
     }
 }

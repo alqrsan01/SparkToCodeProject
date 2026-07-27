@@ -184,6 +184,59 @@ namespace ECommerceApp
 
         static void PlaceOrder()
         {
+            if (loggedInUserId == 0)
+            {
+                Console.WriteLine("You must be logged in to place an order.");
+                return;
+            }
+            else
+            {
+                Console.WriteLine("=====Place an Order=====");
+                ViewAllProducts();
+                
+                List<Order_Product> order_Products = new List<Order_Product>();
+                while (true)
+                {
+                    Console.Write("Enter product ID to add to order (or type '0' to finish): ");
+                    int productId = int.Parse(Console.ReadLine());
+                    Product product = context.Product.FirstOrDefault(p => p.ProductId == productId);
+                    if (productId == 0)
+                    {
+                        Console.WriteLine("Order placement cancelled.");
+                        break;
+                    }
+                    else if (product == null)
+                    {
+                        Console.WriteLine("Product not found. Please try again.");
+                        continue;
+                    }
+                    else
+                    {
+                        Console.Write("Enter quantity: ");
+                        int quantity = int.Parse(Console.ReadLine());
+                        if (quantity <= 0 || quantity > product.Stock)
+                        {
+                            Console.WriteLine("Invalid quantity. Please try again.");
+                            continue;   
+                        }
+                        Order_Product item = new Order_Product();
+                        item.ProductId = productId;
+                        item.quantity = quantity;
+
+                        order_Products.Add(item);
+                        
+                        product.Stock -= quantity;
+                    }
+
+                    Order order = new Order();
+                    order.OrderDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                    order.Status = "Pending";
+                    order.UserId = loggedInUserId;
+
+                    context.Oorder.Add(order);
+                    context.SaveChanges();
+                }
+            }
         }
 
         static void ViewMyOrders()

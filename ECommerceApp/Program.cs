@@ -1,4 +1,5 @@
 ﻿using ECommerceApp.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ECommerceApp
 {
@@ -232,6 +233,7 @@ namespace ECommerceApp
                     order.OrderDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                     order.Status = "Pending";
                     order.UserId = loggedInUserId;
+                    order.OrderProducts = order_Products;
 
                     context.Oorder.Add(order);
                     context.SaveChanges();
@@ -262,6 +264,22 @@ namespace ECommerceApp
 
         static void ViewOrderDetails()
         {
+            Console.WriteLine("=====Order Details=====");
+            Console.Write("Enter order ID to view details: ");
+            int orderId = int.Parse(Console.ReadLine());
+            Order order = context.Oorder.Include(o => o.OrderProducts).FirstOrDefault(o => o.OrderId == orderId);
+            if (order == null)
+            {
+                Console.WriteLine("Order not found or you do not have permission to view this order.");
+                return;
+            }
+            Console.WriteLine("Product Name\tQuantity\tPrice");
+            Console.WriteLine("--------------------------------------------------");
+            foreach (Order_Product op in order.OrderProducts)
+            {
+                Product product = context.Product.FirstOrDefault(p => p.ProductId == op.ProductId);
+                Console.WriteLine($"{product.ProductName}\t{op.quantity}\t{product.Price}");
+            }
         }
 
         static void AddReview()

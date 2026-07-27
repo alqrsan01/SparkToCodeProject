@@ -102,7 +102,6 @@ namespace ECommerceApp
 
         static void Login()
         {
-            ProjectContext context = new ProjectContext();
             Console.WriteLine("=====Login=====");
             Console.Write("Enter email address: ");
             string email = Console.ReadLine();
@@ -123,7 +122,17 @@ namespace ECommerceApp
 
         static void AddCategory()
         {
+            Category category = new Category();
+            Console.WriteLine("=====Add New Category=====");
+            Console.Write("Enter category name: ");
+            category.Name = Console.ReadLine();
+            Console.Write("Enter category description: ");
+            category.Description = Console.ReadLine();
 
+            context.Ccategory.Add(category);
+            context.SaveChanges();
+
+            Console.WriteLine("Category added successfully!");
         }
 
         static void AddProduct()

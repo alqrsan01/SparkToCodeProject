@@ -137,6 +137,29 @@ namespace ECommerceApp
 
         static void AddProduct()
         {
+            Product product = new Product();
+            Console.WriteLine("=====Add New Product=====");
+            Console.Write("Enter product name: ");
+            product.ProductName = Console.ReadLine();
+            Console.Write("Enter product price: ");
+            product.Price = double.Parse(Console.ReadLine());
+            Console.Write("Enter product stock: ");
+            product.Stock = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter category name: ");
+            string categoryName = Console.ReadLine();
+            Category category = context.Ccategory.FirstOrDefault(c => c.Name == categoryName);
+            if (category == null)
+            {
+                Console.WriteLine("Category not found. Please add the category first.");
+                return;
+            }
+            product.CategoryId = category.CategoryId;
+
+            context.Product.Add(product);
+            context.SaveChanges();
+
+            Console.WriteLine("Product added successfully!");
         }
 
         static void ViewAllProducts()

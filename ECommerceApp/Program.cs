@@ -284,6 +284,37 @@ namespace ECommerceApp
 
         static void AddReview()
         {
+            if (loggedInUserId == 0)
+            {
+                Console.WriteLine("You must be logged in to add a review.");
+                return;
+            }
+            Console.WriteLine("=====Add a Review=====");    
+            Console.Write("Enter order ID to review: ");
+            int orderId = int.Parse(Console.ReadLine());
+            Order order = context.Oorder.FirstOrDefault(o => o.OrderId == orderId && o.UserId == loggedInUserId);
+            if (order == null) 
+            { 
+                Console.WriteLine("Order not found or you do not have permission to review this order.");
+                return;
+            }
+
+            Review existing = context.Review.FirstOrDefault(r => r.OrderId == orderId);
+            if (existing != null)
+            {
+                Console.WriteLine("You have already reviewed this order.");
+                return;
+            }
+            Console.Write("Enter your review: ");
+            string reviewText = Console.ReadLine();
+
+            Review review = new Review();
+            review.OrderId = orderId;
+            review.Comment = reviewText;
+            review.CreatedAt = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+            context.Review.Add(review);
+            context.SaveChanges();
         }
 
         static void ViewReviewsForProduct()

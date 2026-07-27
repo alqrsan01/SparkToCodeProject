@@ -241,6 +241,23 @@ namespace ECommerceApp
 
         static void ViewMyOrders()
         {
+            Console.WriteLine("=====My Orders=====");
+            if (loggedInUserId == 0)
+            {
+                Console.WriteLine("You must be logged in to view your orders.");
+                return;
+            }
+            else
+            {
+                Console.WriteLine("ID\tDate\t\tStatus");
+                List<Order> myOrders = context.Oorder.Where(o => o.UserId == loggedInUserId).ToList();
+                Console.WriteLine("--------------------------------------------------");
+                foreach (Order order in myOrders)
+                {
+                    Console.WriteLine($"{order.OrderId}\t{order.OrderDate}\t{order.Status}");
+                }
+                Console.WriteLine("--------------------------------------------------");
+            }
         }
 
         static void ViewOrderDetails()

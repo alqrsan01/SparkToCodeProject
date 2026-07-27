@@ -323,6 +323,11 @@ namespace ECommerceApp
 
         static void Logout()
         {
+            if (loggedInUserId == 0)
+            {
+                loggedInUserId = 0;
+                Console.WriteLine("You have been logged out successfully.");
+            }
         }
     }
 }

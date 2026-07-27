@@ -146,9 +146,15 @@ namespace ECommerceApp
             Console.Write("Enter product stock: ");
             product.Stock = int.Parse(Console.ReadLine());
 
-            Console.Write("Enter category name: ");
-            string categoryName = Console.ReadLine();
-            Category category = context.Ccategory.FirstOrDefault(c => c.Name == categoryName);
+            List<Category> allCateg = context.Ccategory.ToList();
+            foreach (Category cat in allCateg)
+            {
+                Console.WriteLine($"Category ID: {cat.CategoryId}, Name: {cat.Name}");
+            }
+
+            Console.Write("Pick any category ID: ");
+            string categoryId = Console.ReadLine();
+            Category category = context.Ccategory.FirstOrDefault(c => c.CategoryId == int.Parse(categoryId));
             if (category == null)
             {
                 Console.WriteLine("Category not found. Please add the category first.");
@@ -164,6 +170,16 @@ namespace ECommerceApp
 
         static void ViewAllProducts()
         {
+            Console.WriteLine("=====All Products=====");
+            Console.WriteLine("ID\tName\tPrice\tCategory");
+            Console.WriteLine("--------------------------------------------------");
+            List<Product> allProducts = context.Product.ToList();
+            foreach (Product product in allProducts)
+            {
+                Category category = context.Ccategory.FirstOrDefault(c => c.CategoryId == product.CategoryId);
+                Console.WriteLine($"{product.ProductId}\t{product.ProductName}\t{product.Price}\t{category?.Name}");
+            }
+            Console.WriteLine("--------------------------------------------------");
         }
 
         static void PlaceOrder()

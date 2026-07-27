@@ -1,11 +1,13 @@
-﻿namespace ECommerceApp
+﻿using ECommerceApp.Models;
+
+namespace ECommerceApp
 {
     public class Program
     {
         static void Main(string[] args)
         {
             bool exitApp = false;
-            while (exitApp)
+            while (!exitApp)
             {
                 Console.WriteLine("\n===== E-Commerce Console App =====");
                 Console.WriteLine(" 1. Register New User");
@@ -81,7 +83,20 @@
 
         static void RegisterUser()
         {
+            ProjectContext context = new ProjectContext();
+            User user = new User();
+            Console.WriteLine("=====Registration=====");
+            Console.Write("Enter your name: ");
+            user.Name = Console.ReadLine();
+            Console.Write("Enter email address:");
+            user.Email = Console.ReadLine();
+            Console.Write("Enter password: ");
+            user.Password = Console.ReadLine();
 
+            context.Uuser.Add(user);
+            context.SaveChanges();
+
+            Console.WriteLine("User registered successfully!");
         }
 
         static void Login()

@@ -11,7 +11,7 @@ namespace ECommerceApp
         public DbSet<User> Uuser { get; set; }
         public DbSet<Category> Ccategory { get; set; }
         public DbSet<Order> Oorder { get; set; }
-        public DbSet<Order_Product> OPorder_product { get; set; }
+        public DbSet<Order_Product> Order_Product { get; set; }
         public DbSet<Review> Review { get; set; }
         public DbSet<Product> Product { get; set; }
 

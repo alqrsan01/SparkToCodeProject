@@ -7,7 +7,7 @@
             bool exitApp = false;
             while (exitApp)
             {
-                le.WriteLine("\n===== E-Commerce Console App =====");
+                Console.WriteLine("\n===== E-Commerce Console App =====");
                 Console.WriteLine(" 1. Register New User");
                 Console.WriteLine(" 2. Login");
                 Console.WriteLine(" 3. Add New Category");
@@ -98,7 +98,7 @@
         {
         }
 
-        static void ViewAllProducts() 
+        static void ViewAllProducts()
         {
         }
 
@@ -125,4 +125,5 @@
         static void Logout()
         {
         }
+    }
 }

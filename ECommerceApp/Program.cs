@@ -4,6 +4,8 @@ namespace ECommerceApp
 {
     public class Program
     {
+        static ProjectContext context = new ProjectContext();
+        static int loggedInUserId = 0;
         static void Main(string[] args)
         {
             bool exitApp = false;
@@ -65,7 +67,7 @@ namespace ECommerceApp
                         AddReview();
                         break;
                     case 10:
-                        ViewAllReviews();
+                        ViewReviewsForProduct();
                         break;
                     case 11:
                         Logout();
@@ -83,7 +85,6 @@ namespace ECommerceApp
 
         static void RegisterUser()
         {
-            ProjectContext context = new ProjectContext();
             User user = new User();
             Console.WriteLine("=====Registration=====");
             Console.Write("Enter your name: ");
@@ -101,7 +102,23 @@ namespace ECommerceApp
 
         static void Login()
         {
+            ProjectContext context = new ProjectContext();
+            Console.WriteLine("=====Login=====");
+            Console.Write("Enter email address: ");
+            string email = Console.ReadLine();
+            Console.Write("Enter password: ");
+            string password = Console.ReadLine();
 
+            User user = context.Uuser.FirstOrDefault(u => u.Email == email && u.Password == password);
+            if (user == null)
+            {
+                Console.WriteLine("Invalid email or password. Please try again.");
+            }
+            else
+            {
+                Console.WriteLine("Login successful! Welcome, " + user.Name);
+                loggedInUserId = user.UserId;
+            }
         }
 
         static void AddCategory()
@@ -133,7 +150,7 @@ namespace ECommerceApp
         {
         }
 
-        static void ViewAllReviews()
+        static void ViewReviewsForProduct()
         {
         }
 

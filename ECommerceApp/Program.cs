@@ -319,6 +319,44 @@ namespace ECommerceApp
 
         static void ViewReviewsForProduct()
         {
+            Console.WriteLine("=====View Reviews for a Product=====");
+            ViewAllProducts();
+
+            Console.Write("Enter product ID to see its orders' reviews: ");
+            int productId = int.Parse(Console.ReadLine());
+            Product product = context.Product.FirstOrDefault(p => p.ProductId == productId);
+            if (product == null)
+            {
+                Console.WriteLine("Product not found.");
+                return;
+            }
+
+            List<Order_Product> orderProducts = context.Order_Product.Where(op => op.ProductId == productId).ToList();
+
+            if (orderProducts.Count == 0)
+            {
+                Console.WriteLine("No reviews found for this product.");
+                return;
+            }
+
+            Console.WriteLine("Reviews for product: " + product.ProductName);
+            Console.WriteLine("--------------------------------------------------");
+
+            bool anyReviews = false;
+            foreach (Order_Product op in orderProducts)
+            {
+                Review review = context.Review.FirstOrDefault(r => r.OrderId == op.OrderId);
+                if (review != null)
+                {
+                    anyReviews = true;
+                    Console.WriteLine($"Order ID: {op.OrderId}, Review: {review.Comment}");
+                }
+            }
+            if (!anyReviews)
+            {
+                Console.WriteLine("No reviews found for this product.");
+            }
+            Console.WriteLine("--------------------------------------------------");
         }
 
         static void Logout()

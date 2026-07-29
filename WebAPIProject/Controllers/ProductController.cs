@@ -41,5 +41,11 @@ namespace WebAPIProject.Controllers
             List<Product> products = context.Products.ToList();
             return products;
         }
+
+        public List<Product> GetByName(string name)
+        {
+            List<Product> products = context.Products.Where(p => p.ProductName.Contains(name)).ToList();
+            return products;
+        } 
     }
 }

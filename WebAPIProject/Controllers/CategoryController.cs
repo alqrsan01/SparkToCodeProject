@@ -41,5 +41,7 @@ namespace WebAPIProject.Controllers
             List<Category> categories = context.Categories.ToList();
             return categories;
         }
+
+        
     }
 }

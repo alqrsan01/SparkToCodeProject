@@ -15,4 +15,5 @@
   <Project Path="EFCoreProject/EFCoreProject.csproj" Id="1e42a22d-6606-4c51-9875-540e0fafe488" />
   <Project Path="OOP Part 1/OOP Part 1.csproj" Id="cc02b9af-001e-4cc7-a1df-0642d8d4bc2a" />
   <Project Path="OOP-Part2/OOP-Part2.csproj" Id="2234cc46-2d1e-4e9d-a865-1638b0f491a3" />
+  <Project Path="WebAPIProject/WebAPIProject.csproj" Id="ebb328bb-dc99-4342-bff5-8fd66ce8446d" />
 </Solution>

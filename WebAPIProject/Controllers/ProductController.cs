@@ -60,7 +60,7 @@ namespace WebAPIProject.Controllers
             return Ok(products);
         }
 
-        [HttpGet("GetByCategory/{categoryId}")]
+        [HttpGet("UpdateProduct/{prductId}")]
         public IActionResult UpdateProduct(int id, Product newProduct)
         {
             Product product = context.Products.FirstOrDefault(p => p.ProductId == id);
@@ -80,7 +80,7 @@ namespace WebAPIProject.Controllers
             }
         }
 
-        [HttpGet("GetByCategory/{categoryId}")]
+        [HttpGet("UpdateProductPrice/{productId}")]
         public IActionResult UpdateProductPrice(int id, double newPrice)
         {
             Product product = context.Products.FirstOrDefault(p => p.ProductId == id);
@@ -97,7 +97,7 @@ namespace WebAPIProject.Controllers
             }
         }
 
-        [HttpGet("GetByCategory/{categoryId}")]
+        [HttpGet("UpdateProductName/{productId}")]
         public IActionResult UpdateProductName(int id, string newName)
         {
             Product product = context.Products.FirstOrDefault(p => p.ProductId == id);

@@ -14,12 +14,12 @@ namespace WebAPIProject.Controllers
         }
 
         [HttpPost("AddCategory")]
-        public IActionResult AddCategory(Category p)
+        public IActionResult AddCategory(Category c)
         {
-            context.Categories.Add(p);
+            context.Categories.Add(c);
             context.SaveChanges();
 
-            return Ok($"Category added successfully with id: {p.CategoryId}");
+            return Ok($"Category added successfully with id: {c.CategoryId}");
         }
 
         [HttpDelete("RemoveCategory")]

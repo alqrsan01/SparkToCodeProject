@@ -46,6 +46,34 @@ namespace WebAPIProject.Controllers
         {
             List<Product> products = context.Products.Where(p => p.ProductName.Contains(name)).ToList();
             return products;
-        } 
+        }
+
+        public void UpdateProductPrice(int id, double newPrice)
+        {
+            Product product = context.Products.FirstOrDefault(p => p.ProductId == id);
+            if (product == null)
+            {
+
+            }
+            else
+            {
+                product.ProductPrice = newPrice;
+                context.SaveChanges();
+            }
+        }
+
+        public void UpdateProductName(int id, string newName)
+        {
+            Product product = context.Products.FirstOrDefault(p => p.ProductId == id);
+            if (product == null)
+            {
+
+            }
+            else
+            {
+                product.ProductName = newName;
+                context.SaveChanges();
+            }
+        }
     }
 }

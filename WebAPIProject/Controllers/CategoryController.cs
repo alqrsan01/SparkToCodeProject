@@ -1,8 +1,11 @@
-﻿using WebAPIProject.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using WebAPIProject.Models;
 
 namespace WebAPIProject.Controllers
 {
-    public class CategoryController
+    [ApiController]
+    [Route("Category")]
+    public class CategoryController : ControllerBase
     {
         private ProjectContext context;
         public CategoryController(ProjectContext _context)
@@ -10,36 +13,51 @@ namespace WebAPIProject.Controllers
             context = _context;
         }
 
-        public void AddCategory(Category p)
+        [HttpPost("AddCategory")]
+        public IActionResult AddCategory(Category p)
         {
             context.Categories.Add(p);
             context.SaveChanges();
+
+            return Ok($"Category added successfully with id: {p.CategoryId}");
         }
 
-        public void RemoveCategory(int id)
+        [HttpDelete("RemoveCategory")]
+        public IActionResult RemoveCategory(int id)
         {
             Category category = context.Categories.FirstOrDefault(c => c.CategoryId == id);
             if (category == null)
             {
-
+                return NotFound("Category not found");
             }
             else
             {
                 context.Categories.Remove(category);
                 context.SaveChanges();
+
+                return Ok($"Category with id: {id} removed successfully");
             }
         }
 
-        public Category GetCategory(int id)
+        [HttpGet("GetCategory")]
+        public IActionResult GetCategory(int id)
         {
             Category category = context.Categories.FirstOrDefault(c => c.CategoryId == id);
-            return category;
+            if (category == null)
+            {
+                return NotFound("Category not found");
+            }
+            else
+            {
+                return Ok(category);
+            }
         }
 
-        public List<Category> GetAllCategories()
+        [HttpGet("GetAllCategories")]
+        public IActionResult GetAllCategories()
         {
             List<Category> categories = context.Categories.ToList();
-            return categories;
+            return Ok(categories);
         }
 
         

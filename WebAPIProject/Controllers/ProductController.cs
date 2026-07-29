@@ -1,8 +1,11 @@
-﻿using WebAPIProject.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using WebAPIProject.Models;
 
 namespace WebAPIProject.Controllers
 {
-    public class ProductController
+    [ApiController]
+    [Route("Product")]
+    public class ProductController : ControllerBase
     {
         private ProjectContext context;
         public ProductController(ProjectContext _context)
@@ -10,69 +13,104 @@ namespace WebAPIProject.Controllers
             context = _context;
         }
 
-        public void AddProduct(Product p)
+        [HttpPost("AddProduct")]
+        public IActionResult AddProduct(Product p)
         {
             context.Products.Add(p);
             context.SaveChanges();
+
+            return Ok($"Product added successfully with id: {p.ProductId}"); 
         }
 
-        public void RemoveProduct(int id)
+        [HttpDelete("RemoveProduct/{id}")]
+        public IActionResult RemoveProduct(int id)
         {
             Product product = context.Products.FirstOrDefault(p => p.ProductId == id);
             if (product == null)
             {
-                
+                return NotFound("Product not found");
             }
             else
             {
                 context.Products.Remove(product);
                 context.SaveChanges();
+
+                return Ok("Product removed successfully");
             }
         }
 
-        public Product GetProduct(int id)
+        [HttpGet("GetProduct/{id}")]
+        public IActionResult GetProduct(int id)
         {
             Product product = context.Products.FirstOrDefault(p => p.ProductId == id);
-            return product;
+            return Ok(product);
         }
 
-        public List<Product> GetAllProducts()
+        [HttpGet("GetAllProducts")]
+        public IActionResult GetAllProducts()
         {
             List<Product> products = context.Products.ToList();
-            return products;
+            return Ok(products);
         }
 
-        public List<Product> GetByName(string name)
+        [HttpGet("GetByName/{name}")]
+        public IActionResult GetByName(string name)
         {
             List<Product> products = context.Products.Where(p => p.ProductName.Contains(name)).ToList();
-            return products;
+            return Ok(products);
         }
 
-        public void UpdateProductPrice(int id, double newPrice)
+        [HttpGet("GetByCategory/{categoryId}")]
+        public IActionResult UpdateProduct(int id, Product newProduct)
+        {
+            Product product = context.Products.FirstOrDefault(p => p.ProductId == id);
+
+            if ( product == null) 
+            {
+                return NotFound("product not found");
+            }
+            else
+            {
+                product.ProductName = newProduct.ProductName;
+                product.ProductDescription = newProduct.ProductDescription;
+                product.ProductPrice = newProduct.ProductPrice;
+
+                context.SaveChanges();
+                return Ok("Product updated successfully");  
+            }
+        }
+
+        [HttpGet("GetByCategory/{categoryId}")]
+        public IActionResult UpdateProductPrice(int id, double newPrice)
         {
             Product product = context.Products.FirstOrDefault(p => p.ProductId == id);
             if (product == null)
             {
-
+                return NotFound("Product not found");
             }
             else
             {
                 product.ProductPrice = newPrice;
                 context.SaveChanges();
+
+                return Ok("Product price updated successfully");
             }
         }
 
-        public void UpdateProductName(int id, string newName)
+        [HttpGet("GetByCategory/{categoryId}")]
+        public IActionResult UpdateProductName(int id, string newName)
         {
             Product product = context.Products.FirstOrDefault(p => p.ProductId == id);
             if (product == null)
             {
-
+                return NotFound("Product not found");
             }
             else
             {
                 product.ProductName = newName;
                 context.SaveChanges();
+
+                return Ok("Product name updated successfully");
             }
         }
     }
